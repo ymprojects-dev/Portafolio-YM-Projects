@@ -1,0 +1,5 @@
+# Google Ads - viejo
+google.com, pub-7934960489081651, DIRECT, f08c47fec0942fa0
+
+# Google Ads - nuevo
+google.com, pub-9433142674014453, DIRECT, f08c47fec0942fa0
