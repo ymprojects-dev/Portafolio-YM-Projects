@@ -71,37 +71,95 @@ export default function Impostore() {
 
           <div className="flex flex-col gap-24 relative">
             
-            {/* Step 1 & 2 container */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              {/* Step 1 */}
+            {/* Step 1 */}
+            <div className="flex flex-col gap-8">
               <div>
                 <span className="inline-block px-3 py-1 bg-sky-200 text-sky-800 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Paso 1</span>
                 <h3 className="text-2xl font-bold text-slate-800 mb-2">1. Elegí el modo de juego</h3>
-                <p className="text-sm text-slate-500 mb-8 max-w-sm">
+                <p className="text-sm text-slate-500 max-w-xl">
                   Definí cómo se va a jugar la partida y elegí la experiencia que mejor se adapte a tu grupo.
                 </p>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white p-4 rounded-xl shadow-sm flex items-center gap-3 border border-slate-100">
-                  <span className="material-symbols-outlined text-blue-500">star</span>
-                  <span className="text-sm font-semibold">Clásico</span>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
+                {/* Clásico */}
+                <div className="group aspect-[4/5] sm:aspect-square w-full [perspective:1000px]">
+                  <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                    {/* Front Face */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] [backface-visibility:hidden]">
+                      <img src="/images/impostore/mode_classic.png" alt="Clásico" className="w-16 h-16 object-contain mb-4" />
+                      <span className="font-bold text-slate-800 text-sm">Clásico</span>
+                    </div>
+                    {/* Back Face */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#f2f9fd] rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-5 text-center [transform:rotateY(180deg)] [backface-visibility:hidden] border border-sky-100">
+                      <span className="font-bold text-[#2A94D5] text-sm mb-3">Clásico</span>
+                      <p className="text-xs text-slate-600 leading-relaxed font-medium">Los impostores conocen su rol y deben engañar al resto sin ser descubiertos.</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-white p-4 rounded-xl shadow-sm flex items-center gap-3 border border-slate-100">
-                  <span className="material-symbols-outlined text-red-500">error</span>
-                  <span className="text-sm font-semibold">El Perdido</span>
+
+                {/* El Perdido */}
+                <div className="group aspect-[4/5] sm:aspect-square w-full [perspective:1000px]">
+                  <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                    {/* Front Face */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] [backface-visibility:hidden]">
+                      <img src="/images/impostore/mode_lost.png" alt="El Perdido" className="w-16 h-16 object-contain mb-4" />
+                      <span className="font-bold text-slate-800 text-sm">El Perdido</span>
+                    </div>
+                    {/* Back Face */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#f2f9fd] rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-4 text-center [transform:rotateY(180deg)] [backface-visibility:hidden] border border-sky-100">
+                      <span className="font-bold text-[#2A94D5] text-sm mb-2">El Perdido</span>
+                      <p className="text-[11px] text-slate-600 leading-tight font-medium">Los impostores reciben otra palabra dentro de la misma categoría. El objetivo es descubrir quién no comparte la misma palabra.</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-white p-4 rounded-xl shadow-sm flex items-center gap-3 border border-slate-100">
-                  <span className="material-symbols-outlined text-purple-500">shuffle</span>
-                  <span className="text-sm font-semibold">Aleatorio</span>
+
+                {/* Aleatorio */}
+                <div className="group aspect-[4/5] sm:aspect-square w-full [perspective:1000px]">
+                  <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                    {/* Front Face */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] [backface-visibility:hidden]">
+                      <img src="/images/impostore/mode_random.png" alt="Aleatorio" className="w-16 h-16 object-contain mb-4" />
+                      <span className="font-bold text-slate-800 text-sm">Aleatorio</span>
+                    </div>
+                    {/* Back Face */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#f2f9fd] rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-4 text-center [transform:rotateY(180deg)] [backface-visibility:hidden] border border-sky-100">
+                      <span className="font-bold text-[#2A94D5] text-sm mb-2">Aleatorio</span>
+                      <p className="text-[11px] text-slate-600 leading-tight font-medium">La cantidad de impostores se define al azar en cada partida. Puede haber uno, varios, todos o ninguno.</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-white p-4 rounded-xl shadow-sm flex items-center gap-3 border border-slate-100">
-                  <span className="material-symbols-outlined text-green-500">directions_run</span>
-                  <span className="text-sm font-semibold">En las Penumbras</span>
+
+                {/* Entre nosotros */}
+                <div className="group aspect-[4/5] sm:aspect-square w-full [perspective:1000px]">
+                  <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                    {/* Front Face */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] [backface-visibility:hidden]">
+                      <img src="/images/impostore/mode_among_us.png" alt="Entre Nosotros" className="w-16 h-16 object-contain mb-4" />
+                      <span className="font-bold text-slate-800 text-sm text-center px-1">Entre Nosotros</span>
+                    </div>
+                    {/* Back Face */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#f2f9fd] rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-4 text-center [transform:rotateY(180deg)] [backface-visibility:hidden] border border-sky-100">
+                      <span className="font-bold text-[#2A94D5] text-[13px] mb-2 leading-tight">Entre Nosotros</span>
+                      <p className="text-[11px] text-slate-600 leading-tight font-medium">La palabra es el nombre de un jugador. Todos reciben el mismo nombre... menos el impostor.</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-white p-4 rounded-xl shadow-sm flex items-center gap-3 border border-slate-100 col-span-2">
-                  <span className="material-symbols-outlined text-slate-500">settings</span>
-                  <span className="text-sm font-semibold">Personalizado</span>
+
+                {/* Personalizado */}
+                <div className="group aspect-[4/5] sm:aspect-square w-full [perspective:1000px]">
+                  <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                    {/* Front Face */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] [backface-visibility:hidden]">
+                      <img src="/images/impostore/mode_custom.png" alt="Personalizado" className="w-16 h-16 object-contain mb-4" />
+                      <span className="font-bold text-slate-800 text-sm">Personalizado</span>
+                    </div>
+                    {/* Back Face */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#f2f9fd] rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-4 text-center [transform:rotateY(180deg)] [backface-visibility:hidden] border border-sky-100">
+                      <span className="font-bold text-[#2A94D5] text-sm mb-2">Personalizado</span>
+                      <p className="text-[11px] text-slate-600 leading-tight font-medium">Vos mandás: elegís la palabra y asignás al impostor. Perfecto para partidas temáticas o internas.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
