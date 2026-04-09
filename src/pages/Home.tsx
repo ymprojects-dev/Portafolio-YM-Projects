@@ -89,6 +89,7 @@ const PROCESS = [
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -108,7 +109,10 @@ export default function Home() {
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "glass-nav py-4 shadow-sm" : "bg-transparent py-6"}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <div className="text-2xl font-bold tracking-tight text-on-surface">YM Projects</div>
+          <div className="flex items-center gap-3">
+            <img src="/images/foreground_logo_ym_projects.png" alt="YM Projects Logo" className="w-8 h-8 object-contain" />
+            <span className="text-2xl font-bold tracking-tight text-on-surface">YM Projects</span>
+          </div>
           <div className="hidden md:flex items-center gap-8">
             {[
               { id: "about", label: "Sobre Mí" },
@@ -412,7 +416,19 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={(e) => {
+                e.preventDefault();
+                const subject = encodeURIComponent(`Contacto desde Portfolio - ${formData.name || 'Nuevo'}`);
+                const body = encodeURIComponent(`${formData.message}\n\n---\nEnviado por: ${formData.name || 'Anónimo'} (${formData.email || 'Sin correo'})`);
+                
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+                if (isMobile) {
+                  window.location.href = `mailto:ym.projects.dev@gmail.com?subject=${subject}&body=${body}`;
+                } else {
+                  window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=ym.projects.dev@gmail.com&su=${subject}&body=${body}`, '_blank');
+                }
+              }}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant ml-1">Nombre</label>
@@ -420,6 +436,9 @@ export default function Home() {
                       className="w-full bg-surface-container-low border-transparent focus:border-primary focus:ring-0 rounded-2xl px-5 py-4 transition-all outline-none"
                       placeholder="Juan Pérez"
                       type="text"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      required
                     />
                   </div>
                   <div className="space-y-2">
@@ -428,6 +447,9 @@ export default function Home() {
                       className="w-full bg-surface-container-low border-transparent focus:border-primary focus:ring-0 rounded-2xl px-5 py-4 transition-all outline-none"
                       placeholder="juan@ejemplo.com"
                       type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      required
                     />
                   </div>
                 </div>
@@ -437,9 +459,12 @@ export default function Home() {
                     className="w-full bg-surface-container-low border-transparent focus:border-primary focus:ring-0 rounded-2xl px-5 py-4 transition-all outline-none resize-none"
                     placeholder="Escribe brevemente acerca de tu proyecto..."
                     rows={4}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    required
                   ></textarea>
                 </div>
-                <button className="w-full premium-gradient text-white font-bold py-5 rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.01] transition-transform">
+                <button type="submit" className="w-full premium-gradient text-white font-bold py-5 rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.01] transition-transform">
                   Enviar Mensaje
                 </button>
               </form>
@@ -463,7 +488,7 @@ export default function Home() {
             <a href="https://github.com/ymprojects-dev" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
               <Github className="w-4 h-4" /> Github
             </a>
-            <a href="#" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+            <a href="#" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
               <Linkedin className="w-4 h-4" /> LinkedIn
             </a>
             <a href="https://play.google.com/store/apps/dev?id=8925538644696216986" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
