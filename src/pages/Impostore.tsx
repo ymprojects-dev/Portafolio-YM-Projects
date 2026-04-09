@@ -1,7 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Impostore() {
+  const [players, setPlayers] = useState(["Mati", "Pedro", "Lu", "Agus", "Vale"]);
+  const [playerName, setPlayerName] = useState("");
+
+  const handleAddPlayer = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const trimmedName = playerName.trim();
+    if (trimmedName && !players.includes(trimmedName)) {
+      setPlayers([...players, trimmedName]);
+      setPlayerName("");
+    }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -12,7 +24,7 @@ export default function Impostore() {
       <nav className="absolute top-0 w-full z-50">
         <div className="flex justify-between items-center w-full px-8 py-6 max-w-7xl mx-auto">
           <Link to="/" className="flex items-center gap-3">
-            <img src="/images/impostore/Foreground%20Impostore.png" alt="Logo" className="w-10 h-10 object-contain" />
+            <img src="/images/impostore/foreground_impostore.png" alt="Logo" className="w-10 h-10 object-contain" />
             <span className="text-2xl font-black text-slate-900 tracking-tighter">Impostore</span>
           </Link>
           <div className="hidden md:flex items-center gap-8 font-semibold text-sm">
@@ -55,7 +67,7 @@ export default function Impostore() {
           </div>
           <div className="relative flex justify-center items-center">
              <div className="bg-white rounded-[2.5rem] p-10 shadow-[0_20px_60px_-15px_rgba(42,148,213,0.3)] w-full max-w-[480px] aspect-square flex items-center justify-center">
-               <img src="/images/logo_impostore.png" alt="Impostore logomark" className="w-full h-full object-contain" />
+               <img src="/images/impostore/logo_impostore.png" alt="Impostore logomark" className="w-full h-full object-contain" />
              </div>
           </div>
         </div>
@@ -87,7 +99,7 @@ export default function Impostore() {
                   <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                     {/* Front Face */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] [backface-visibility:hidden]">
-                      <img src="/images/impostore/mode_classic.png" alt="Clásico" className="w-16 h-16 object-contain mb-4" />
+                      <img src="/images/impostore/modes/mode_classic.png" alt="Clásico" className="w-16 h-16 object-contain mb-4" />
                       <span className="font-bold text-slate-800 text-sm">Clásico</span>
                     </div>
                     {/* Back Face */}
@@ -103,7 +115,7 @@ export default function Impostore() {
                   <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                     {/* Front Face */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] [backface-visibility:hidden]">
-                      <img src="/images/impostore/mode_lost.png" alt="El Perdido" className="w-16 h-16 object-contain mb-4" />
+                      <img src="/images/impostore/modes/mode_lost.png" alt="El Perdido" className="w-16 h-16 object-contain mb-4" />
                       <span className="font-bold text-slate-800 text-sm">El Perdido</span>
                     </div>
                     {/* Back Face */}
@@ -119,7 +131,7 @@ export default function Impostore() {
                   <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                     {/* Front Face */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] [backface-visibility:hidden]">
-                      <img src="/images/impostore/mode_random.png" alt="Aleatorio" className="w-16 h-16 object-contain mb-4" />
+                      <img src="/images/impostore/modes/mode_random.png" alt="Aleatorio" className="w-16 h-16 object-contain mb-4" />
                       <span className="font-bold text-slate-800 text-sm">Aleatorio</span>
                     </div>
                     {/* Back Face */}
@@ -135,7 +147,7 @@ export default function Impostore() {
                   <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                     {/* Front Face */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] [backface-visibility:hidden]">
-                      <img src="/images/impostore/mode_among_us.png" alt="Entre Nosotros" className="w-16 h-16 object-contain mb-4" />
+                      <img src="/images/impostore/modes/mode_among_us.png" alt="Entre Nosotros" className="w-16 h-16 object-contain mb-4" />
                       <span className="font-bold text-slate-800 text-sm text-center px-1">Entre Nosotros</span>
                     </div>
                     {/* Back Face */}
@@ -151,7 +163,7 @@ export default function Impostore() {
                   <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                     {/* Front Face */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] [backface-visibility:hidden]">
-                      <img src="/images/impostore/mode_custom.png" alt="Personalizado" className="w-16 h-16 object-contain mb-4" />
+                      <img src="/images/impostore/modes/mode_custom.png" alt="Personalizado" className="w-16 h-16 object-contain mb-4" />
                       <span className="font-bold text-slate-800 text-sm">Personalizado</span>
                     </div>
                     {/* Back Face */}
@@ -168,20 +180,34 @@ export default function Impostore() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                {/* UI Graphic on the left */}
               <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 md:order-1 order-2">
-                <div className="flex gap-2">
-                  <div className="bg-slate-100 rounded-lg flex-1 px-4 py-3 flex items-center text-slate-400 text-sm">
-                    Nombre del jugador
-                  </div>
-                  <button className="bg-[#2A94D5] text-white px-5 py-3 rounded-lg text-sm font-bold shadow-sm">
+                <form onSubmit={handleAddPlayer} className="flex gap-2">
+                  <input
+                    type="text"
+                    value={playerName}
+                    onChange={(e) => setPlayerName(e.target.value)}
+                    placeholder="Nombre del jugador"
+                    className="bg-slate-100 rounded-lg flex-1 px-4 py-3 flex items-center text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-[#2A94D5] transition-all"
+                  />
+                  <button type="submit" className="bg-[#2A94D5] text-white px-5 py-3 rounded-lg text-sm font-bold shadow-sm hover:bg-[#207db8] transition-colors">
                     Agregar
                   </button>
-                </div>
-                <div className="flex flex-wrap gap-2 mt-4">
-                   <div className="bg-blue-100 text-blue-800 text-xs px-3 py-1.5 rounded-md font-bold">Mati</div>
-                   <div className="bg-blue-100 text-blue-800 text-xs px-3 py-1.5 rounded-md font-bold">Agus</div>
-                   <div className="bg-blue-100 text-blue-800 text-xs px-3 py-1.5 rounded-md font-bold">Zoe</div>
-                   <div className="bg-blue-100 text-blue-800 text-xs px-3 py-1.5 rounded-md font-bold">Juan</div>
-                   <div className="bg-blue-100 text-blue-800 text-xs px-3 py-1.5 rounded-md font-bold">Leo</div>
+                </form>
+                <div className="flex overflow-x-auto gap-2 mt-4 pb-2 snap-x flex-nowrap [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-slate-200 [&::-webkit-scrollbar-thumb]:rounded-full">
+                  {players.map((player, index) => (
+                    <div key={index} className="bg-sky-100 text-[#2A94D5] text-xs pl-3 pr-2.5 py-1.5 rounded-md font-bold flex items-center gap-1.5 shrink-0 snap-start">
+                      {player}
+                      <button 
+                        onClick={() => setPlayers(players.filter(p => p !== player))}
+                        className="opacity-50 hover:opacity-100 transition-opacity flex items-center justify-center p-0.5 rounded-full hover:bg-sky-200/50"
+                        title="Eliminar"
+                      >
+                        <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="18" y1="6" x2="6" y2="18"></line>
+                          <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
                 </div>
               </div>
 

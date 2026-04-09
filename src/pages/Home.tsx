@@ -33,7 +33,7 @@ const PROJECTS = [
     category: "Juego de Fiesta / Social",
     description: "Un juego social de fiesta para jugar en grupo, donde todos reciben una palabra secreta... excepto el impostor. Los jugadores discuten, investigan e intentan descubrir quién no conoce la palabra.",
     tags: ["Offline", "Fiesta", "Multijugador", "Kotlin", "Jetpack Compose"],
-    image: "/images/logo_impostore.png",
+    image: "/images/impostore/logo_impostore.png",
     isFeatured: true,
     links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.impostore", details: "/impostore" }
   },
@@ -395,7 +395,7 @@ export default function Home() {
                     <div className="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center">
                       <Mail className="w-5 h-5 text-primary" />
                     </div>
-                    <span className="font-medium">hola@ymprojects.dev</span>
+                    <span className="font-medium">ym.projects.dev@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center">
@@ -453,7 +453,7 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-8">
             <a href="#" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Privacidad</a>
             <a href="#" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Términos</a>
-            <a href="#" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+            <a href="https://github.com/ymprojects-dev" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
               <Github className="w-4 h-4" /> Github
             </a>
             <a href="#" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
