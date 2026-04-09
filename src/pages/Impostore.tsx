@@ -4,6 +4,17 @@ import { Link } from "react-router-dom";
 export default function Impostore() {
   const [players, setPlayers] = useState(["Mati", "Pedro", "Lu", "Agus", "Vale"]);
   const [playerName, setPlayerName] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(["animales", "gastronomia", "famosos", "deportes", "tecnologia"]);
+  const [impostorCount, setImpostorCount] = useState(1);
+  const [pistaEnabled, setPistaEnabled] = useState(true);
+
+  const toggleCategory = (id: string) => {
+    setSelectedCategories(prev =>
+      prev.includes(id)
+        ? prev.filter(c => c !== id)
+        : [...prev, id]
+    );
+  };
 
   const handleAddPlayer = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -16,6 +27,11 @@ export default function Impostore() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Impostore";
+    const link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+    if (link) {
+      link.href = "/images/impostore/foreground_impostore.png";
+    }
   }, []);
 
   return (
@@ -30,7 +46,7 @@ export default function Impostore() {
           <div className="hidden md:flex items-center gap-8 font-semibold text-sm">
             <a className="text-[#2A94D5] border-b-2 border-[#2A94D5] pb-1" href="#inicio">Inicio</a>
             <a className="text-slate-600 hover:text-[#2A94D5] transition-colors" href="#como-jugar">Como jugar</a>
-            <a className="text-slate-600 hover:text-[#2A94D5] transition-colors" href="#funciones">Funciones</a>
+            <a className="text-slate-600 hover:text-[#2A94D5] transition-colors" href="#galeria">Cómo se ve</a>
           </div>
           <a href="https://play.google.com/store/apps/details?id=com.ymprojects.impostore&pli=1" target="_blank" rel="noopener noreferrer" className="bg-[#2A94D5] text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-md hover:scale-105 active:scale-95 duration-200 transition-all">
             Descargar
@@ -66,9 +82,9 @@ export default function Impostore() {
             </div>
           </div>
           <div className="relative flex justify-center items-center">
-             <div className="bg-white rounded-[2.5rem] p-10 shadow-[0_20px_60px_-15px_rgba(42,148,213,0.3)] w-full max-w-[480px] aspect-square flex items-center justify-center">
-               <img src="/images/impostore/logo_impostore.png" alt="Impostore logomark" className="w-full h-full object-contain" />
-             </div>
+            <div className="bg-white rounded-[2.5rem] p-10 shadow-[0_20px_60px_-15px_rgba(42,148,213,0.3)] w-full max-w-[480px] aspect-square flex items-center justify-center">
+              <img src="/images/impostore/logo_impostore.png" alt="Impostore logomark" className="w-full h-full object-contain" />
+            </div>
           </div>
         </div>
       </section>
@@ -82,7 +98,7 @@ export default function Impostore() {
           </div>
 
           <div className="flex flex-col gap-24 relative">
-            
+
             {/* Step 1 */}
             <div className="flex flex-col gap-8">
               <div>
@@ -92,7 +108,7 @@ export default function Impostore() {
                   Definí cómo se va a jugar la partida y elegí la experiencia que mejor se adapte a tu grupo.
                 </p>
               </div>
-              
+
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
                 {/* Clásico */}
                 <div className="group aspect-[4/5] sm:aspect-square w-full [perspective:1000px]">
@@ -178,7 +194,7 @@ export default function Impostore() {
 
             {/* Step 2 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-               {/* UI Graphic on the left */}
+              {/* UI Graphic on the left */}
               <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 md:order-1 order-2">
                 <form onSubmit={handleAddPlayer} className="flex gap-2">
                   <input
@@ -196,7 +212,7 @@ export default function Impostore() {
                   {players.map((player, index) => (
                     <div key={index} className="bg-sky-100 text-[#2A94D5] text-xs pl-3 pr-2.5 py-1.5 rounded-md font-bold flex items-center gap-1.5 shrink-0 snap-start">
                       {player}
-                      <button 
+                      <button
                         onClick={() => setPlayers(players.filter(p => p !== player))}
                         className="opacity-50 hover:opacity-100 transition-opacity flex items-center justify-center p-0.5 rounded-full hover:bg-sky-200/50"
                         title="Eliminar"
@@ -221,54 +237,93 @@ export default function Impostore() {
             </div>
 
             {/* Step 3 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="flex flex-col gap-6 w-full overflow-hidden">
               <div>
                 <span className="inline-block px-3 py-1 bg-sky-200 text-sky-800 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Paso 3</span>
                 <h3 className="text-2xl font-bold text-slate-800 mb-2">3. Elegí las categorías</h3>
-                <p className="text-sm text-slate-500 max-w-sm">
+                <p className="text-sm text-slate-500 max-w-xl">
                   Seleccioná una o varias categorías para definir de dónde saldrán las palabras de la ronda.
                 </p>
               </div>
-              
-              <div className="flex gap-4">
-                 <div className="relative flex-1 aspect-video rounded-2xl overflow-hidden group">
-                   <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=500&q=80" alt="Animales" className="w-full h-full object-cover rounded-2xl" />
-                   <div className="absolute inset-0 bg-black/40 flex items-end p-4">
-                     <span className="text-white font-bold text-lg">Animales</span>
-                   </div>
-                   <div className="absolute top-3 right-3 bg-blue-500 w-6 h-6 rounded-full flex items-center justify-center text-white">
-                      <span className="material-symbols-outlined text-[14px]">check</span>
-                   </div>
-                 </div>
-                 <div className="relative flex-1 aspect-video rounded-2xl overflow-hidden group">
-                   <img src="https://images.unsplash.com/photo-1563805042-7684c8e9e5cb?w=500&q=80" alt="Comida" className="w-full h-full object-cover rounded-2xl" />
-                   <div className="absolute inset-0 bg-black/40 flex items-end p-4">
-                     <span className="text-white font-bold text-lg">Comida</span>
-                   </div>
-                 </div>
+
+              <div className="w-full [mask-image:linear-gradient(to_right,transparent_0%,black_32px,black_calc(100%-32px),transparent_100%)] md:-mx-4 lg:mx-0">
+                <div className="flex overflow-x-auto gap-4 pb-6 snap-x pt-1 px-6 md:px-8 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-slate-200 [&::-webkit-scrollbar-thumb]:rounded-full">
+                  {[
+                    { id: 'animales', name: 'Animales', image: '/images/impostore/categories/c_animales.png' },
+                    { id: 'deportes', name: 'Deportes', image: '/images/impostore/categories/c_deportes.png' },
+                    { id: 'entretenimiento', name: 'Entretenimiento', image: '/images/impostore/categories/c_entretenimiento.png' },
+                    { id: 'famosos', name: 'Famosos', image: '/images/impostore/categories/c_famosos.png' },
+                    { id: 'gastronomia', name: 'Gastronomía', image: '/images/impostore/categories/c_gastronomia.png' },
+                    { id: 'historia', name: 'Historia', image: '/images/impostore/categories/c_historia.png' },
+                    { id: 'marca', name: 'Marcas', image: '/images/impostore/categories/c_marca.png' },
+                    { id: 'mundo', name: 'Mundo', image: '/images/impostore/categories/c_mundo.png' },
+                    { id: 'naturaleza', name: 'Naturaleza', image: '/images/impostore/categories/c_naturaleza.png' },
+                    { id: 'objetos', name: 'Objetos', image: '/images/impostore/categories/c_objetos.png' },
+                    { id: 'tecnologia', name: 'Tecnología', image: '/images/impostore/categories/c_tecnologia.png' },
+                    { id: 'trabajos', name: 'Trabajos', image: '/images/impostore/categories/c_trabajos.png' },
+                    { id: 'transporte', name: 'Transporte', image: '/images/impostore/categories/c_transporte.png' },
+                  ].map((cat) => {
+                    const isSelected = selectedCategories.includes(cat.id);
+                    return (
+                      <div
+                        key={cat.id}
+                        onClick={() => toggleCategory(cat.id)}
+                        className={`relative w-32 md:w-40 aspect-square rounded-2xl overflow-hidden group shrink-0 snap-start shadow-sm transition-all hover:-translate-y-1 cursor-pointer border-2 ${isSelected ? 'bg-sky-100 border-[#2A94D5]' : 'bg-slate-100 border-transparent hover:border-slate-200'}`}
+                      >
+                        <img src={cat.image} alt={cat.name} className="w-full h-full object-cover" />
+                        {isSelected && (
+                          <div className="absolute top-2 right-2 bg-[#2A94D5] w-6 h-6 rounded-full flex items-center justify-center text-white shadow-md z-10 border-2 border-white">
+                            <span className="material-symbols-outlined text-[14px] font-bold">check</span>
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             </div>
 
             {/* Step 4 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-               {/* UI Graphic on the left */}
-              <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 md:order-1 order-2">
-                <div className="flex justify-between items-center mb-6">
-                  <span className="text-slate-700 font-semibold text-sm">Impostores</span>
-                  <div className="flex items-center gap-4 bg-slate-100 rounded-full px-2 py-1">
-                     <button className="w-6 h-6 rounded-full bg-white shadow-sm flex items-center justify-center text-slate-400 text-lg font-bold">-</button>
-                     <span className="font-bold text-slate-800 text-sm">2</span>
-                     <button className="w-6 h-6 rounded-full bg-[#2A94D5] text-white flex items-center justify-center text-lg font-bold">+</button>
+              {/* UI Graphic on the left */}
+              <div className="bg-white p-6 md:p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 md:order-1 order-2 flex flex-col gap-8">
+                {/* Row 1: Impostores */}
+                <div className="flex justify-between items-center">
+                  <div className="flex items-start gap-4">
+                    <img src="/images/impostore/icons/impostores_icono.png" alt="Impostores" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+                    <div>
+                      <h4 className="text-[#111111] font-bold text-base md:text-lg leading-tight mb-0.5">Impostores</h4>
+                      <p className="text-slate-500 text-xs md:text-sm font-medium">Cantidad recomendada: 1</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 md:gap-4 pr-1">
+                    <button
+                      onClick={() => setImpostorCount(Math.max(0, impostorCount - 1))}
+                      className="w-8 h-8 flex items-center justify-center text-slate-800 text-2xl font-medium hover:text-slate-500 transition-colors"
+                    >&minus;</button>
+                    <span className="font-bold text-[#e63b2e] text-lg md:text-xl min-w-[1.25rem] text-center">{impostorCount}</span>
+                    <button
+                      onClick={() => setImpostorCount(Math.min(9, impostorCount + 1))}
+                      className="w-8 h-8 flex items-center justify-center text-slate-800 text-2xl font-medium hover:text-slate-500 transition-colors"
+                    >+</button>
                   </div>
                 </div>
+
+                {/* Row 2: Pista del impostor */}
                 <div className="flex justify-between items-center">
-                  <div>
-                    <p className="text-slate-700 font-semibold text-sm">Pista para el Impostor</p>
-                    <p className="text-slate-400 text-xs mt-0.5">Ayuda al Impostor a no estar tan perdido</p>
+                  <div className="flex items-start gap-4">
+                    <img src="/images/impostore/icons/pista_icono.png" alt="Pista" className="w-8 h-8 md:w-10 md:h-10 object-contain pt-0.5" />
+                    <div className="max-w-[280px]">
+                      <h4 className="text-[#111111] font-bold text-base md:text-lg leading-tight mb-1">Pista del impostor</h4>
+                      <p className="text-slate-500 text-xs md:text-sm font-medium">Dales una pista a los impostores para ayudarlos a pasar desapercibidos.</p>
+                    </div>
                   </div>
-                  <div className="w-10 h-6 bg-[#2A94D5] rounded-full relative">
-                    <div className="w-4 h-4 bg-white rounded-full absolute right-1 top-1"></div>
-                  </div>
+                  <button
+                    onClick={() => setPistaEnabled(!pistaEnabled)}
+                    className={`shrink-0 w-[46px] h-7 rounded-full relative transition-colors duration-200 ease-in-out cursor-pointer ${pistaEnabled ? 'bg-[#e63b2e]' : 'bg-slate-300'}`}
+                  >
+                    <div className={`absolute top-1 left-1 w-5 h-5 bg-white rounded-full transition-transform duration-200 ease-in-out shadow-sm ${pistaEnabled ? 'translate-x-[18px]' : 'translate-x-0'}`}></div>
+                  </button>
                 </div>
               </div>
 
@@ -283,79 +338,161 @@ export default function Impostore() {
 
             {/* Step 5 */}
             <div className="flex flex-col items-center text-center mt-8">
-               <span className="inline-block px-3 py-1 bg-sky-200 text-sky-800 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Paso 5</span>
-               <h3 className="text-2xl font-bold text-slate-800 mb-2">5. Revelá los roles en secreto</h3>
-               <p className="text-sm text-slate-500 max-w-lg mb-10">
-                 Cada jugador mira su turno en su smartphone para memorizar la palabra... o si es el impostor.
-               </p>
+              <span className="inline-block px-3 py-1 bg-sky-200 text-sky-800 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Paso 5</span>
+              <h3 className="text-2xl font-bold text-slate-800 mb-2">5. Revelá los roles en secreto</h3>
+              <p className="text-sm text-slate-500 max-w-lg mb-10">
+                Cada jugador mira su turno en su smartphone para memorizar la palabra... o si es el impostor.
+              </p>
 
-               <div className="flex flex-col md:flex-row gap-6 justify-center w-full max-w-3xl">
-                 <div className="bg-[#2A94D5] text-white rounded-3xl p-8 flex-1 aspect-[3/4] flex flex-col items-center justify-center shadow-lg transform -rotate-3 transition-transform hover:rotate-0">
-                    <span className="material-symbols-outlined text-5xl mb-4">touch_app</span>
-                    <h4 className="font-bold text-xl mb-1">Jugador 1</h4>
-                    <p className="text-sky-200 text-xs">Toca para revelar</p>
-                 </div>
-                 <div className="bg-white border-2 border-slate-200 rounded-3xl p-8 flex-1 aspect-[3/4] flex flex-col items-center justify-center shadow-xl z-10 transition-transform hover:-translate-y-2">
-                    <span className="material-symbols-outlined text-[#2A94D5] text-5xl mb-4">park</span>
-                    <h4 className="font-extrabold text-[#2A94D5] text-3xl mb-1">Árbol</h4>
-                    <p className="text-slate-400 text-xs">Tú eres Inocente</p>
-                 </div>
-                 <div className="bg-white border-2 border-red-200 rounded-3xl p-8 flex-1 aspect-[3/4] flex flex-col items-center justify-center shadow-lg transform rotate-3 transition-transform hover:rotate-0 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-red-50 rounded-bl-full -z-10"></div>
-                    <span className="material-symbols-outlined text-red-600 text-5xl mb-4">theater_comedy</span>
-                    <h4 className="font-extrabold text-red-600 text-2xl mb-1">Impostor</h4>
-                    <p className="text-red-400 text-xs">¡No te descubran!</p>
-                 </div>
-               </div>
+              <div className="flex flex-col md:flex-row gap-6 justify-center w-full max-w-4xl">
+                {/* Card 1: Mati (Innocent) */}
+                <div className="group flex-1 aspect-[3/4] w-full [perspective:1000px]">
+                  <div className="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-3xl">
+                    {/* Front Face (Hidden) */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[radial-gradient(circle,_#2A94D5,_#1A72AF)] rounded-3xl overflow-hidden [backface-visibility:hidden]">
+                      <div className="absolute inset-0 opacity-10 flex items-center justify-center">
+                        <img src="/images/impostore/icons/icono_logo.png" alt="Logo" className="w-[90%] object-contain" />
+                      </div>
+                      <h4 className="font-bold text-white text-3xl mb-auto mt-12 relative z-10">Mati</h4>
+                      <img src="/images/impostore/icons/icon_press.png" alt="Press" className="w-20 h-20 md:w-24 md:h-24 relative z-10 brightness-0 invert" />
+                      <p className="text-white text-sm md:text-base mt-auto mb-12 relative z-10 font-medium px-6 md:px-8">Mantené apretado para revelar la palabra</p>
+                    </div>
+                    {/* Back Face (Revealed) */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[radial-gradient(circle,_#C2DFF5,_#8CC7ED)] rounded-3xl overflow-hidden [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                      <div className="absolute inset-0 opacity-10 flex items-center justify-center">
+                        <img src="/images/impostore/icons/icono_eye.png" alt="Eye" className="w-full scale-125 object-contain" />
+                      </div>
+                      <h4 className="font-bold text-[#2e4053] text-4xl mt-12 md:mt-16 mb-auto relative z-10">Mati</h4>
+                      <div className="relative z-10 flex flex-col items-center mb-auto">
+                        <p className="text-[#2e4053] text-lg font-medium mb-1">La palabra es:</p>
+                        <p className="text-[#2A94D5] text-3xl md:text-4xl font-black tracking-wide">ÁRBOL</p>
+                      </div>
+                      <p className="text-[#2e4053] text-sm md:text-base mt-auto mb-12 md:mb-16 relative z-10 font-medium px-6 md:px-8">No reveles tu rol a los otros jugadores.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 2: Pedro (Impostor) */}
+                <div className="group flex-1 aspect-[3/4] w-full [perspective:1000px]">
+                  <div className="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-3xl">
+                    {/* Front Face (Hidden) */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[radial-gradient(circle,_#2A94D5,_#1A72AF)] rounded-3xl overflow-hidden [backface-visibility:hidden]">
+                      <div className="absolute inset-0 opacity-10 flex items-center justify-center">
+                        <img src="/images/impostore/icons/icono_logo.png" alt="Logo" className="w-[90%] object-contain" />
+                      </div>
+                      <h4 className="font-bold text-white text-3xl mb-auto mt-12 relative z-10">Pedro</h4>
+                      <img src="/images/impostore/icons/icon_press.png" alt="Press" className="w-20 h-20 md:w-24 md:h-24 relative z-10 brightness-0 invert" />
+                      <p className="text-white text-sm md:text-base mt-auto mb-12 relative z-10 font-medium px-6 md:px-8">Mantené apretado para revelar la palabra</p>
+                    </div>
+                    {/* Back Face (Revealed) */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[radial-gradient(circle,_#FAD1CC,_#F37A70)] rounded-3xl overflow-hidden [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                      <div className="absolute inset-0 opacity-10 flex items-center justify-center">
+                        <img src="/images/impostore/icons/impostores_icono.png" alt="Impostor" className="w-full scale-125 object-contain brightness-0" />
+                      </div>
+                      <h4 className="font-bold text-[#2e4053] text-4xl mt-12 md:mt-16 mb-auto relative z-10">Pedro</h4>
+                      <div className="relative z-10 flex flex-col items-center mb-auto">
+                        <p className="text-[#2e4053] text-lg font-medium mb-1">Sos el:</p>
+                        <p className="text-[#d32f2f] text-3xl md:text-4xl font-black tracking-wide mb-3">IMPOSTOR</p>
+                        <p className="text-[#2e4053] text-lg font-medium">Pista: <span className="text-[#d32f2f] font-bold">NATURALEZA</span></p>
+                      </div>
+                      <p className="text-[#2e4053] text-sm md:text-base mt-auto mb-12 md:mb-16 relative z-10 font-medium px-6 md:px-8 leading-tight">No reveles la palabra a los otros jugadores.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 3: Agus (Innocent) */}
+                <div className="group flex-1 aspect-[3/4] w-full [perspective:1000px]">
+                  <div className="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-3xl">
+                    {/* Front Face (Hidden) */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[radial-gradient(circle,_#2A94D5,_#1A72AF)] rounded-3xl overflow-hidden [backface-visibility:hidden]">
+                      <div className="absolute inset-0 opacity-10 flex items-center justify-center">
+                        <img src="/images/impostore/icons/icono_logo.png" alt="Logo" className="w-[90%] object-contain" />
+                      </div>
+                      <h4 className="font-bold text-white text-3xl mb-auto mt-12 relative z-10">Agus</h4>
+                      <img src="/images/impostore/icons/icon_press.png" alt="Press" className="w-20 h-20 md:w-24 md:h-24 relative z-10 brightness-0 invert" />
+                      <p className="text-white text-sm md:text-base mt-auto mb-12 relative z-10 font-medium px-6 md:px-8">Mantené apretado para revelar la palabra</p>
+                    </div>
+                    {/* Back Face (Revealed) */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[radial-gradient(circle,_#C2DFF5,_#8CC7ED)] rounded-3xl overflow-hidden [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                      <div className="absolute inset-0 opacity-10 flex items-center justify-center">
+                        <img src="/images/impostore/icons/icono_eye.png" alt="Eye" className="w-full scale-125 object-contain" />
+                      </div>
+                      <h4 className="font-bold text-[#2e4053] text-4xl mt-12 md:mt-16 mb-auto relative z-10">Agus</h4>
+                      <div className="relative z-10 flex flex-col items-center mb-auto">
+                        <p className="text-[#2e4053] text-lg font-medium mb-1">La palabra es:</p>
+                        <p className="text-[#2A94D5] text-3xl md:text-4xl font-black tracking-wide">ÁRBOL</p>
+                      </div>
+                      <p className="text-[#2e4053] text-sm md:text-base mt-auto mb-12 md:mb-16 relative z-10 font-medium px-6 md:px-8">No reveles tu rol a los otros jugadores.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Step 6 */}
             <div className="flex flex-col items-center text-center mt-12 mb-10">
-               <span className="inline-block px-3 py-1 bg-sky-200 text-sky-800 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Paso 6</span>
-               <h3 className="text-2xl font-bold text-slate-800 mb-2">6. Discutan y descubran al impostor</h3>
-               <p className="text-sm text-slate-500 max-w-lg mb-10">
-                 Hagan preguntas, respondan con cuidado y descubran quién está improvisando sin saber la palabra.
-               </p>
+              <span className="inline-block px-3 py-1 bg-sky-200 text-sky-800 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Paso 6</span>
+              <h3 className="text-2xl font-bold text-slate-800 mb-2">6. Discutan y descubran al impostor</h3>
+              <p className="text-sm text-slate-500 max-w-lg mb-10">
+                Hagan preguntas, respondan con cuidado y descubran quién está improvisando sin saber la palabra.
+              </p>
 
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl">
-                  <div className="bg-slate-200/50 rounded-3xl p-6 flex flex-col gap-4">
-                     <div className="flex items-start gap-3">
-                       <div className="w-8 h-8 rounded-full bg-[#2A94D5] text-white flex items-center justify-center text-xs font-bold shrink-0">M</div>
-                       <div className="bg-white px-4 py-2 rounded-2xl rounded-tl-sm text-sm text-slate-700 shadow-sm">
-                         ¿Tiene hojas?
-                       </div>
-                     </div>
-                     <div className="flex items-start gap-3 flex-row-reverse">
-                       <div className="w-8 h-8 rounded-full bg-[#2A94D5] text-white flex items-center justify-center text-xs font-bold shrink-0">A</div>
-                       <div className="bg-[#2A94D5] text-white px-4 py-2 rounded-2xl rounded-tr-sm text-sm shadow-sm">
-                         Sí, puede ser.
-                       </div>
-                     </div>
-                     <div className="flex items-start gap-3">
-                       <div className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-xs font-bold shrink-0">Z</div>
-                       <div className="bg-white px-4 py-2 rounded-2xl rounded-tl-sm text-sm text-slate-700 shadow-sm border border-red-100">
-                         Esa es mi respuesta... Juan, ¿estás seguro?
-                       </div>
-                     </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+                <div className="bg-sky-50/50 rounded-[2rem] p-6 lg:p-8 flex flex-col gap-4 shadow-inner border border-slate-100">
+                  {/* Participant M */}
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-[#2A94D5] text-white flex items-center justify-center text-sm font-bold shrink-0 shadow-sm">M</div>
+                    <div className="bg-white px-4 py-2.5 rounded-2xl rounded-tl-sm text-sm text-slate-700 shadow-sm border border-sky-100">
+                      “Yo diría: tronco.”
+                    </div>
                   </div>
-                  <div className="bg-white rounded-3xl p-8 flex flex-col items-center justify-center shadow-md border border-slate-100 relative">
-                     <div className="absolute top-4 left-0 right-0 text-center text-[10px] font-bold text-slate-400 tracking-wider">RESULTADOS</div>
-                     <div className="flex flex-col items-center mb-8 mt-4">
-                       <div className="flex items-center gap-2 mb-2">
-                         <span className="material-symbols-outlined text-[#2A94D5] text-lg">search</span>
-                         <span className="text-slate-500 text-sm font-semibold">Palabra:</span>
-                         <span className="text-[#2A94D5] font-bold text-lg">Árbol</span>
-                       </div>
-                     </div>
-                     <div className="border-t border-slate-100 w-full pt-6 flex flex-col items-center">
-                        <div className="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center mb-3">
-                           <span className="material-symbols-outlined">person</span>
-                        </div>
-                        <h4 className="font-bold text-red-600 text-lg">Juan era el Impostor</h4>
-                        <p className="text-slate-400 text-xs">¡Fue descubierto!</p>
-                     </div>
+                  {/* Participant Y */}
+                  <div className="flex items-start gap-3 flex-row-reverse">
+                    <div className="w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center text-sm font-bold shrink-0 shadow-sm">Y</div>
+                    <div className="bg-[#2A94D5] text-white px-4 py-2.5 rounded-2xl rounded-tr-sm text-sm shadow-sm">
+                      “La mía: hojas.”
+                    </div>
                   </div>
-               </div>
+                  {/* Participant A */}
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-sky-600 text-white flex items-center justify-center text-sm font-bold shrink-0 shadow-sm">A</div>
+                    <div className="bg-white px-4 py-2.5 rounded-2xl rounded-tl-sm text-sm text-slate-700 shadow-sm border border-sky-100">
+                      “La mía: sombra.”
+                    </div>
+                  </div>
+                  {/* Participant P (Impostor) */}
+                  <div className="flex items-start gap-3 flex-row-reverse">
+                    <div className="w-8 h-8 rounded-full bg-[#e34234] text-white flex items-center justify-center text-sm font-bold shrink-0 shadow-sm ring-2 ring-red-100 ring-offset-1">P</div>
+                    <div className="bg-white px-4 py-2.5 rounded-2xl rounded-tr-sm text-sm text-[#e34234] font-medium shadow-sm border border-red-200">
+                      “Piensenlá, hongo.”
+                    </div>
+                  </div>
+                  {/* Participant V */}
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-[#2A94D5] text-white flex items-center justify-center text-sm font-bold shrink-0 shadow-sm">V</div>
+                    <div className="bg-[#2A94D5] text-white px-4 py-2.5 rounded-2xl rounded-tl-sm text-sm shadow-sm">
+                      “Y yo: raíz.”
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-white rounded-[2rem] p-8 md:p-10 flex flex-col items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-100 h-[100%]">
+                  <div className="text-[11px] font-bold text-slate-500 tracking-widest uppercase mb-4">RESULTADOS</div>
+
+                  <div className="flex items-center gap-3 mb-8">
+                    <span className="material-symbols-outlined text-[#2A94D5] text-[28px] font-light">search</span>
+                    <h3 className="text-[#2A94D5] font-medium text-[22px] tracking-tight">La palabra era Árbol</h3>
+                  </div>
+
+                  <div className="w-[95%] h-[1px] bg-slate-200 mb-8"></div>
+
+                  <div className="flex items-center gap-4">
+                    <div className="w-[52px] h-[52px] rounded-full bg-[#e34234] flex items-center justify-center shadow-sm shrink-0">
+                      <img src="/images/impostore/icons/impostores_icono.png" alt="Impostor" className="w-[30px] h-[30px] object-contain brightness-0 invert" />
+                    </div>
+                    <h3 className="font-semibold text-[#e34234] text-[22px] tracking-tight whitespace-nowrap">Pedro era el impostor</h3>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -366,46 +503,28 @@ export default function Impostore() {
       <section className="py-16 px-6" id="galeria">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#111111] tracking-tight mb-12">Así se ve Impostore</h2>
-          
-          <div className="flex flex-wrap justify-center gap-6 overflow-hidden pb-8 px-4">
-             {/* Mockups of screens side by side */}
-             <div className="w-48 h-96 bg-[#212121] rounded-[32px] p-2 shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-slate-800">
-               <div className="w-full h-full bg-gradient-to-b from-purple-700 to-pink-600 rounded-[24px] flex flex-col items-center justify-center relative overflow-hidden">
-                 <div className="text-white font-bold text-xl">soñar de noche</div>
-                 <div className="text-purple-200 text-xs mt-2">Dificultad: Fácil</div>
-               </div>
-             </div>
-             
-             <div className="w-48 h-96 bg-[#212121] rounded-[32px] p-2 shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-slate-800">
-               <div className="w-full h-full bg-gradient-to-b from-sky-400 to-blue-600 rounded-[24px] flex flex-col items-center justify-center relative">
-                 <div className="w-8 h-8 rounded-full bg-white opacity-20 absolute top-12 left-8"></div>
-                 <div className="w-4 h-4 rounded-full bg-white opacity-40 absolute bottom-32 right-12"></div>
-                 <span className="material-symbols-outlined text-white text-4xl mb-4">visibility</span>
-                 <div className="w-16 h-1 bg-white/30 rounded-full mt-4"></div>
-               </div>
-             </div>
-             
-             <div className="w-48 h-96 bg-white rounded-[32px] p-2 shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-slate-200">
-               <div className="w-full h-full bg-gradient-to-b from-sky-100 to-white rounded-[24px] flex flex-col items-center relative overflow-hidden">
-                 <div className="text-sky-500 font-light text-5xl mt-12 mb-2">07</div>
-                 <h1 className="text-sky-900 font-bold mb-4">Impostore</h1>
-                 <svg className="absolute bottom-0 w-full h-32" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path d="M0,100 C30,40 70,80 100,20 L100,100 Z" fill="#e0f2fe" />
-                 </svg>
-               </div>
-             </div>
-             
-             <div className="w-48 h-96 bg-[#111111] rounded-[32px] p-2 shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-slate-800">
-               <div className="w-full h-full bg-[#0cb0b8] rounded-[24px] flex flex-col items-center justify-center relative overflow-hidden">
-                 <svg className="w-full h-full opacity-30 absolute" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path d="M0,0 L100,50 L0,100 Z" fill="#ffffff" />
-                 </svg>
-                 <div className="flex gap-2 mb-4 absolute bottom-6">
-                   <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"><div className="w-2 h-2 rounded-full bg-white"></div></div>
-                   <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"><div className="w-2 h-2 rounded-full bg-white"></div></div>
-                 </div>
-               </div>
-             </div>
+
+          <div className="w-full [mask-image:linear-gradient(to_right,transparent_0%,black_32px,black_calc(100%-32px),transparent_100%)]">
+            <div className="flex overflow-x-auto gap-6 pb-8 pt-4 px-8 snap-x [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-slate-200 [&::-webkit-scrollbar-thumb]:rounded-full">
+              {[
+                "Screenshot_20260409_002000.png",
+                "Screenshot_20260409_002036.png",
+                "Screenshot_20260409_002056.png",
+                "Screenshot_20260409_002124.png",
+                "Screenshot_20260409_002202.png",
+                "Screenshot_20260409_002225.png",
+                "Screenshot_20260409_002638.png",
+                "Screenshot_20260409_002644.png",
+              ].map((imgSrc, i) => (
+                <div key={i} className="w-48 h-96 bg-[#212121] rounded-[32px] p-2 shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-slate-800 shrink-0 snap-center transition-transform duration-300 hover:-translate-y-2">
+                  <img
+                    src={`/images/impostore/screenshots/${imgSrc}`}
+                    alt={`Captura ${i + 1}`}
+                    className="w-full h-full object-cover rounded-[24px]"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -435,8 +554,8 @@ export default function Impostore() {
               <p>© 2026 Impostore. El juego de fiesta social.</p>
             </div>
             <div className="flex gap-6 font-medium">
-              <a href="#" className="hover:text-slate-800 transition-colors">Privacidad</a>
-              <a href="#" className="hover:text-slate-800 transition-colors">Términos</a>
+              <Link to="/impostore/privacidad" className="hover:text-slate-800 transition-colors">Privacidad</Link>
+              <Link to="/impostore/terminos" className="hover:text-slate-800 transition-colors">Términos</Link>
               <a href="#" className="hover:text-slate-800 transition-colors">Soporte</a>
               <a href="#" className="hover:text-slate-800 transition-colors">Contacto</a>
             </div>

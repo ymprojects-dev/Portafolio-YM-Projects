@@ -61,7 +61,7 @@ const EXPERTISE = [
   {
     icon: <Smartphone className="w-6 h-6" />,
     title: "Desarrollador Android",
-    description: "Experto en Kotlin, Jetpack Compose y arquitecturas modernas MVVM/MVI para apps nativas."
+    description: "Experto en Kotlin, Jetpack Compose y arquitecturas modernas MVVM para apps nativas."
   },
   {
     icon: <Palette className="w-6 h-6" />,
@@ -84,7 +84,7 @@ const PROCESS = [
   { step: "01", title: "Descubrimiento", desc: "Entendiendo tu meta y usuarios." },
   { step: "02", title: "Arquitectura", desc: "Planificación técnica y estructura." },
   { step: "03", title: "Desarrollo", desc: "Programación ágil iterativa y tests." },
-  { step: "04", title: "Lanzamiento", desc: "Publicación en el App Store y soporte." }
+  { step: "04", title: "Lanzamiento", desc: "Publicación en la Play Store y soporte." }
 ];
 
 export default function Home() {
@@ -93,6 +93,13 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
+
+    document.title = "YM Projects";
+    const link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+    if (link) {
+      link.href = "/images/foreground_logo_ym_projects_web.ico";
+    }
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -269,7 +276,7 @@ export default function Home() {
                         <a href={project.links.play} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity">
                           <Play className="w-4 h-4 fill-current" /> Google Play
                         </a>
-                        <Link to={project.links.details} onClick={() => window.scrollTo(0,0)} className="flex items-center gap-2 border border-outline-variant px-6 py-3 rounded-xl font-bold hover:bg-surface-container-low transition-colors">
+                        <Link to={project.links.details} onClick={() => window.scrollTo(0, 0)} className="flex items-center gap-2 border border-outline-variant px-6 py-3 rounded-xl font-bold hover:bg-surface-container-low transition-colors">
                           Detalles
                         </Link>
                       </div>
@@ -309,7 +316,7 @@ export default function Home() {
                       </div>
                       <div className="flex gap-3">
                         <a href={project.links.play} target="_blank" rel="noopener noreferrer" className="flex-1 bg-primary text-white px-4 py-2.5 rounded-xl text-xs font-bold hover:opacity-90 transition-opacity text-center flex items-center justify-center">Google Play</a>
-                        <Link to={project.links.details} onClick={() => window.scrollTo(0,0)} className="flex-1 border border-outline-variant px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-surface-container-low transition-colors text-center flex items-center justify-center">Detalles</Link>
+                        <Link to={project.links.details} onClick={() => window.scrollTo(0, 0)} className="flex-1 border border-outline-variant px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-surface-container-low transition-colors text-center flex items-center justify-center">Detalles</Link>
                       </div>
                     </div>
                   </motion.div>
@@ -453,11 +460,14 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-8">
             <a href="#" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Privacidad</a>
             <a href="#" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Términos</a>
-            <a href="https://github.com/ymprojects-dev" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+            <a href="https://github.com/ymprojects-dev" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
               <Github className="w-4 h-4" /> Github
             </a>
             <a href="#" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
               <Linkedin className="w-4 h-4" /> LinkedIn
+            </a>
+            <a href="https://play.google.com/store/apps/dev?id=8925538644696216986" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+              <Play className="w-4 h-4" /> Google Play
             </a>
           </div>
         </div>
