@@ -256,101 +256,59 @@ export default function Home() {
               <p className="text-on-surface-variant text-lg">Una selección de mis mejores aplicaciones, desarrolladas con alta prioridad al diseño.</p>
             </div>
 
-            <div className="space-y-12">
-              {PROJECTS.filter(p => p.isFeatured).map((project) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12">
+              {PROJECTS.map((project, i) => (
                 <motion.div
                   key={project.id}
                   onClick={() => { window.scrollTo(0, 0); navigate(project.links.details); }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="group bg-white rounded-[2.5rem] overflow-hidden border border-outline-variant/10 ambient-shadow cursor-pointer hover:shadow-2xl transition-all"
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-white rounded-[2rem] border border-outline-variant/10 group ambient-shadow flex flex-col relative cursor-pointer hover:shadow-2xl transition-all"
                 >
-                  <div className="flex flex-col lg:flex-row">
-                    <div className="lg:w-3/5 relative h-[400px] lg:h-auto overflow-hidden">
+                  <div className="relative">
+                    <div className="aspect-[2/1] relative overflow-hidden bg-surface-container-low rounded-t-[2rem]">
+                      <img
+                        src={project.banner}
+                        alt={`${project.title} banner`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        referrerPolicy="no-referrer"
+                      />
+                      {project.isFeatured && (
+                        <div className="absolute top-6 left-6 z-20">
+                          <span className="bg-primary text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
+                            App Destacada
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="absolute -bottom-10 right-8 w-24 h-24 bg-white rounded-[1.5rem] shadow-xl border border-outline-variant/10 z-10 transition-transform group-hover:-translate-y-1">
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover rounded-[1.5rem]"
                       />
-                      <div className="absolute top-8 left-8">
-                        <span className="bg-primary text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
-                          Proyecto Estrella
-                        </span>
-                      </div>
                     </div>
-                    <div className="lg:w-2/5 p-8 lg:p-16 flex flex-col justify-center">
-                      <span className="text-primary font-bold tracking-widest uppercase text-[10px] mb-4">{project.category}</span>
-                      <h3 className="text-3xl lg:text-4xl font-bold mb-6">{project.title}</h3>
-                      <p className="text-on-surface-variant text-lg mb-8 leading-relaxed">{project.description}</p>
-                      <div className="flex flex-wrap gap-2 mb-10">
-                        {project.tags.map(tag => (
-                          <span key={tag} className="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-semibold text-on-surface-variant">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex flex-wrap gap-4 relative z-20">
-                        <a href={project.links.play} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity">
-                          <Play className="w-4 h-4 fill-current" /> Google Play
-                        </a>
-                        <Link to={project.links.details} onClick={(e) => { e.stopPropagation(); window.scrollTo(0, 0); }} className="flex items-center gap-2 border border-outline-variant px-6 py-3 rounded-xl font-bold hover:bg-surface-container-low transition-colors">
-                          Detalles
-                        </Link>
-                      </div>
+                  </div>
+                  <div className="p-8 pt-4 flex-1 flex flex-col">
+                    <span className="text-on-surface-variant font-bold tracking-widest uppercase text-[10px] mb-2 block">{project.category}</span>
+                    <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
+                    <p className="text-on-surface-variant mb-6 text-sm leading-relaxed line-clamp-3">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-8 mt-auto">
+                      {project.tags.map(tag => (
+                        <span key={tag} className="px-2 py-0.5 bg-surface-container-low rounded-full text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex gap-3 relative z-20">
+                      <a href={project.links.play} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 bg-primary text-white px-4 py-2.5 rounded-xl text-xs font-bold hover:opacity-90 transition-opacity text-center flex items-center justify-center">Google Play</a>
+                      <Link to={project.links.details} onClick={(e) => { e.stopPropagation(); window.scrollTo(0, 0); }} className="flex-1 border border-outline-variant px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-surface-container-low transition-colors text-center flex items-center justify-center">Detalles</Link>
                     </div>
                   </div>
                 </motion.div>
               ))}
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12 mt-12">
-                {PROJECTS.filter(p => !p.isFeatured).map((project, i) => (
-                  <motion.div
-                    key={project.id}
-                    onClick={() => { window.scrollTo(0, 0); navigate(project.links.details); }}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="bg-white rounded-[2rem] border border-outline-variant/10 group ambient-shadow flex flex-col relative cursor-pointer hover:shadow-2xl transition-all"
-                  >
-                    <div className="relative">
-                      <div className="aspect-[2/1] relative overflow-hidden bg-surface-container-low rounded-t-[2rem]">
-                        <img
-                          src={project.banner}
-                          alt={`${project.title} banner`}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                          referrerPolicy="no-referrer"
-                        />
-                      </div>
-                      <div className="absolute -bottom-10 right-8 w-24 h-24 bg-white rounded-3xl p-1.5 shadow-xl border border-outline-variant/10 z-10 transition-transform group-hover:-translate-y-1">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover rounded-[1.2rem]"
-                        />
-                      </div>
-                    </div>
-                    <div className="p-8 pt-14 flex-1 flex flex-col">
-                      <span className="text-on-surface-variant font-bold tracking-widest uppercase text-[10px] mb-2 block">{project.category}</span>
-                      <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                      <p className="text-on-surface-variant mb-6 text-sm leading-relaxed line-clamp-2">{project.description}</p>
-                      <div className="flex flex-wrap gap-2 mb-8">
-                        {project.tags.map(tag => (
-                          <span key={tag} className="px-2 py-0.5 bg-surface-container-low rounded-full text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex gap-3 mt-auto relative z-20">
-                        <a href={project.links.play} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 bg-primary text-white px-4 py-2.5 rounded-xl text-xs font-bold hover:opacity-90 transition-opacity text-center flex items-center justify-center">Google Play</a>
-                        <Link to={project.links.details} onClick={(e) => { e.stopPropagation(); window.scrollTo(0, 0); }} className="flex-1 border border-outline-variant px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-surface-container-low transition-colors text-center flex items-center justify-center">Detalles</Link>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
             </div>
           </div>
         </section>
