@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import {
   Smartphone,
@@ -34,8 +34,19 @@ const PROJECTS = [
     description: "Un juego social de fiesta para jugar en grupo, donde todos reciben una palabra secreta... excepto el impostor. Los jugadores discuten, investigan e intentan descubrir quién no conoce la palabra.",
     tags: ["Offline", "Fiesta", "Multijugador", "Kotlin", "Jetpack Compose"],
     image: "/images/impostore/logo_impostore.png",
+    banner: "/images/impostore/banner_impostore.png",
     isFeatured: true,
     links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.impostore", details: "/impostore" }
+  },
+  {
+    id: "diviso",
+    title: "Diviso - Dividir Gastos",
+    category: "Finanzas / Utilidad",
+    description: "Una aplicación móvil para dividir gastos de juntadas, viajes y salidas de forma simple. Registra consumos, reparte lo que pagó cada persona y calcula automáticamente cuánto debe cada uno.",
+    tags: ["Gastos", "Cuentas", "Grupos", "RolJuntadas"],
+    image: "/images/diviso/logo_diviso.png",
+    banner: "/images/diviso/banner_diviso.png",
+    links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.dadospersonalizados", details: "/dados" }
   },
   {
     id: "barrasfinder",
@@ -43,7 +54,8 @@ const PROJECTS = [
     category: "Fitness / Utilidad",
     description: "Una aplicación móvil para encontrar barras de calistenia en Argentina. Explora ubicaciones cercanas, mira detalles, fotos, comentarios y guarda tus favoritas.",
     tags: ["Mapas", "Calistenia", "Argentina", "Comunidad"],
-    image: "/images/logo_barras_finder.png",
+    image: "/images/barras_finder/logo_barras_finder.png",
+    banner: "/images/barras_finder/banner_barrasfinder.png",
     links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.barrascalisteniapoint", details: "/barrasfinder" }
   },
   {
@@ -52,7 +64,8 @@ const PROJECTS = [
     category: "Herramientas / Entretenimiento",
     description: "Una aplicación de dados personalizable que permite elegir el número de dados y caras, ideal para juegos de mesa y juegos de rol.",
     tags: ["Dados", "Personalización", "Juegos de Mesa", "Rol"],
-    image: "/images/logo_dados_personalizados.png",
+    image: "/images/dados_personalizados/logo_dados_personalizados.png",
+    banner: "/images/dados_personalizados/banner_diviso.png",
     links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.dadospersonalizados", details: "/dados" }
   }
 ];
@@ -88,6 +101,7 @@ const PROCESS = [
 ];
 
 export default function Home() {
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
@@ -246,10 +260,11 @@ export default function Home() {
               {PROJECTS.filter(p => p.isFeatured).map((project) => (
                 <motion.div
                   key={project.id}
+                  onClick={() => { window.scrollTo(0, 0); navigate(project.links.details); }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="group bg-white rounded-[2.5rem] overflow-hidden border border-outline-variant/10 ambient-shadow"
+                  className="group bg-white rounded-[2.5rem] overflow-hidden border border-outline-variant/10 ambient-shadow cursor-pointer hover:shadow-2xl transition-all"
                 >
                   <div className="flex flex-col lg:flex-row">
                     <div className="lg:w-3/5 relative h-[400px] lg:h-auto overflow-hidden">
@@ -276,11 +291,11 @@ export default function Home() {
                           </span>
                         ))}
                       </div>
-                      <div className="flex flex-wrap gap-4">
-                        <a href={project.links.play} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity">
+                      <div className="flex flex-wrap gap-4 relative z-20">
+                        <a href={project.links.play} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity">
                           <Play className="w-4 h-4 fill-current" /> Google Play
                         </a>
-                        <Link to={project.links.details} onClick={() => window.scrollTo(0, 0)} className="flex items-center gap-2 border border-outline-variant px-6 py-3 rounded-xl font-bold hover:bg-surface-container-low transition-colors">
+                        <Link to={project.links.details} onClick={(e) => { e.stopPropagation(); window.scrollTo(0, 0); }} className="flex items-center gap-2 border border-outline-variant px-6 py-3 rounded-xl font-bold hover:bg-surface-container-low transition-colors">
                           Detalles
                         </Link>
                       </div>
@@ -289,25 +304,35 @@ export default function Home() {
                 </motion.div>
               ))}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12 mt-12">
                 {PROJECTS.filter(p => !p.isFeatured).map((project, i) => (
                   <motion.div
                     key={project.id}
+                    onClick={() => { window.scrollTo(0, 0); navigate(project.links.details); }}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="bg-white rounded-[2rem] overflow-hidden border border-outline-variant/10 group ambient-shadow"
+                    className="bg-white rounded-[2rem] border border-outline-variant/10 group ambient-shadow flex flex-col relative cursor-pointer hover:shadow-2xl transition-all"
                   >
-                    <div className="aspect-video relative overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        referrerPolicy="no-referrer"
-                      />
+                    <div className="relative">
+                      <div className="aspect-[2/1] relative overflow-hidden bg-surface-container-low rounded-t-[2rem]">
+                        <img
+                          src={project.banner}
+                          alt={`${project.title} banner`}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                      <div className="absolute -bottom-10 right-8 w-24 h-24 bg-white rounded-3xl p-1.5 shadow-xl border border-outline-variant/10 z-10 transition-transform group-hover:-translate-y-1">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover rounded-[1.2rem]"
+                        />
+                      </div>
                     </div>
-                    <div className="p-10">
+                    <div className="p-8 pt-14 flex-1 flex flex-col">
                       <span className="text-on-surface-variant font-bold tracking-widest uppercase text-[10px] mb-2 block">{project.category}</span>
                       <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
                       <p className="text-on-surface-variant mb-6 text-sm leading-relaxed line-clamp-2">{project.description}</p>
@@ -318,9 +343,9 @@ export default function Home() {
                           </span>
                         ))}
                       </div>
-                      <div className="flex gap-3">
-                        <a href={project.links.play} target="_blank" rel="noopener noreferrer" className="flex-1 bg-primary text-white px-4 py-2.5 rounded-xl text-xs font-bold hover:opacity-90 transition-opacity text-center flex items-center justify-center">Google Play</a>
-                        <Link to={project.links.details} onClick={() => window.scrollTo(0, 0)} className="flex-1 border border-outline-variant px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-surface-container-low transition-colors text-center flex items-center justify-center">Detalles</Link>
+                      <div className="flex gap-3 mt-auto relative z-20">
+                        <a href={project.links.play} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 bg-primary text-white px-4 py-2.5 rounded-xl text-xs font-bold hover:opacity-90 transition-opacity text-center flex items-center justify-center">Google Play</a>
+                        <Link to={project.links.details} onClick={(e) => { e.stopPropagation(); window.scrollTo(0, 0); }} className="flex-1 border border-outline-variant px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-surface-container-low transition-colors text-center flex items-center justify-center">Detalles</Link>
                       </div>
                     </div>
                   </motion.div>
@@ -420,9 +445,9 @@ export default function Home() {
                 e.preventDefault();
                 const subject = encodeURIComponent(`Contacto desde Portfolio - ${formData.name || 'Nuevo'}`);
                 const body = encodeURIComponent(`${formData.message}\n\n---\nEnviado por: ${formData.name || 'Anónimo'} (${formData.email || 'Sin correo'})`);
-                
+
                 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                
+
                 if (isMobile) {
                   window.location.href = `mailto:ym.projects.dev@gmail.com?subject=${subject}&body=${body}`;
                 } else {
@@ -483,8 +508,6 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-8">
-            <a href="#" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Privacidad</a>
-            <a href="#" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Términos</a>
             <a href="https://github.com/ymprojects-dev" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
               <Github className="w-4 h-4" /> Github
             </a>

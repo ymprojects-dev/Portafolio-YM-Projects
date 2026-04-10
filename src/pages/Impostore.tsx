@@ -400,7 +400,7 @@ export default function Impostore() {
                   </div>
                 </div>
 
-                {/* Card 3: Agus (Innocent) */}
+                {/* Card 3: Fausti (Innocent) */}
                 <div className="group flex-1 aspect-[3/4] w-full [perspective:1000px]">
                   <div className="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-3xl">
                     {/* Front Face (Hidden) */}
@@ -408,7 +408,7 @@ export default function Impostore() {
                       <div className="absolute inset-0 opacity-10 flex items-center justify-center">
                         <img src="/images/impostore/icons/icono_logo.png" alt="Logo" className="w-[90%] object-contain" />
                       </div>
-                      <h4 className="font-bold text-white text-3xl mb-auto mt-12 relative z-10">Agus</h4>
+                      <h4 className="font-bold text-white text-3xl mb-auto mt-12 relative z-10">Fausti</h4>
                       <img src="/images/impostore/icons/icon_press.png" alt="Press" className="w-20 h-20 md:w-24 md:h-24 relative z-10 brightness-0 invert" />
                       <p className="text-white text-sm md:text-base mt-auto mb-12 relative z-10 font-medium px-6 md:px-8">Mantené apretado para revelar la palabra</p>
                     </div>
@@ -417,7 +417,7 @@ export default function Impostore() {
                       <div className="absolute inset-0 opacity-10 flex items-center justify-center">
                         <img src="/images/impostore/icons/icono_eye.png" alt="Eye" className="w-full scale-125 object-contain" />
                       </div>
-                      <h4 className="font-bold text-[#2e4053] text-4xl mt-12 md:mt-16 mb-auto relative z-10">Agus</h4>
+                      <h4 className="font-bold text-[#2e4053] text-4xl mt-12 md:mt-16 mb-auto relative z-10">Fausti</h4>
                       <div className="relative z-10 flex flex-col items-center mb-auto">
                         <p className="text-[#2e4053] text-lg font-medium mb-1">La palabra es:</p>
                         <p className="text-[#2A94D5] text-3xl md:text-4xl font-black tracking-wide">ÁRBOL</p>
