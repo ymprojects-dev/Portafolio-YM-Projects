@@ -22,22 +22,23 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* Impostore */}
         <Route path="/impostore" element={<Impostore />} />
         <Route path="/impostore/terminos" element={<ImpostoreTerminos />} />
         <Route path="/impostore/privacidad" element={<ImpostorePrivacidad />} />
+        {/* Sbarra */}
         <Route path="/sbarra" element={<Sbarra />} />
         <Route path="/sbarra/terminos" element={<SbarraTerminos />} />
         <Route path="/sbarra/delete-account" element={<SbarraDeleteAccount />} />
         <Route path="/sbarra/privacidad" element={<SbarraPrivacidad />} />
+        {/* Fortuna */}
         <Route path="/fortuna" element={<Fortuna />} />
         <Route path="/fortuna/terminos" element={<FortunaTerminos />} />
         <Route path="/fortuna/privacidad" element={<FortunaPrivacidad />} />
+        {/* Diviso */}
         <Route path="/diviso" element={<Diviso />} />
         <Route path="/diviso/terminos" element={<DivisoTerminos />} />
         <Route path="/diviso/privacidad" element={<DivisoPrivacidad />} />
-        {/* Placeholder for other routes */}
-        <Route path="/barrasfinder" element={<Home />} />
-        <Route path="/dados" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );

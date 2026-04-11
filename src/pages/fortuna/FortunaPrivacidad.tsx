@@ -4,7 +4,7 @@ export default function FortunaPrivacidad() {
   return (
     <PrivacyPolicyLayout
       appName="Fortuna App"
-      developerName="YM Projects"
+      companyName="YM Projects"
       contactEmail="ym.projects.compose@gmail.com"
       iconPath="/images/fortuna/logo_fortuna.png"
       returnRoute="/fortuna"

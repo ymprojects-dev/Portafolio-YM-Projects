@@ -4,7 +4,7 @@ export default function DivisoPrivacidad() {
   return (
     <PrivacyPolicyLayout
       appName="Diviso App"
-      developerName="YM Projects"
+      companyName="YM Projects"
       contactEmail="ym.projects.compose@gmail.com"
       iconPath="/images/diviso/logo_diviso.png"
       returnRoute="/diviso"
