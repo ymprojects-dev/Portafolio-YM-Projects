@@ -66,7 +66,7 @@ const PROJECTS = [
     tags: ["Dados", "Personalización", "Juegos de Mesa", "Rol"],
     image: "/images/fortuna/logo_fortuna.png",
     banner: "/images/fortuna/banner_fortuna.png",
-    links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.dadospersonalizados", details: "/dados" }
+    links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.dadospersonalizados", details: "/fortuna" }
   }
 ];
 

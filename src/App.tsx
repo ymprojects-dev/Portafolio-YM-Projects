@@ -9,6 +9,10 @@ import SbarraDeleteAccount from "./pages/sbarra/SbarraDeleteAccount";
 import SbarraPrivacidad from "./pages/sbarra/SbarraPrivacidad";
 import SbarraTerminos from "./pages/sbarra/SbarraTerminos";
 
+import Fortuna from "./pages/fortuna/Fortuna";
+import FortunaPrivacidad from "./pages/fortuna/FortunaPrivacidad";
+import FortunaTerminos from "./pages/fortuna/FortunaTerminos";
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -21,6 +25,9 @@ export default function App() {
         <Route path="/sbarra/terminos" element={<SbarraTerminos />} />
         <Route path="/sbarra/delete-account" element={<SbarraDeleteAccount />} />
         <Route path="/sbarra/privacidad" element={<SbarraPrivacidad />} />
+        <Route path="/fortuna" element={<Fortuna />} />
+        <Route path="/fortuna/terminos" element={<FortunaTerminos />} />
+        <Route path="/fortuna/privacidad" element={<FortunaPrivacidad />} />
         {/* Placeholder for other routes */}
         <Route path="/barrasfinder" element={<Home />} />
         <Route path="/dados" element={<Home />} />
