@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Impostore from "./pages/impostore/Impostore";
 
+import Impostore from "./pages/impostore/Impostore";
 import ImpostoreTerminos from "./pages/impostore/ImpostoreTerminos";
 import ImpostorePrivacidad from "./pages/impostore/ImpostorePrivacidad";
+
 import Sbarra from "./pages/sbarra/Sbarra";
 import SbarraDeleteAccount from "./pages/sbarra/SbarraDeleteAccount";
 import SbarraPrivacidad from "./pages/sbarra/SbarraPrivacidad";

@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import {
   Smartphone,
@@ -17,6 +17,7 @@ import {
   Play,
   Zap as ZapIcon
 } from "lucide-react";
+import { APP_LINKS } from "../constants";
 
 const Github = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.24c3-.34 6-1.53 6-6.76a5.2 5.2 0 0 0-1.39-3.5 5.2 5.2 0 0 0-.1-3.4s-1.1-.35-3.5 1.29a12.8 12.8 0 0 0-7 0C6.1 2.35 5 2.7 5 2.7a5.2 5.2 0 0 0-.1 3.4A5.2 5.2 0 0 0 3.6 9.64c0 5.22 3 6.42 6 6.76-.7.63-1 1.6-1 3.24v4"></path><path d="M4 19c-2-1-2-1-4-1"></path></svg>
@@ -32,11 +33,11 @@ const PROJECTS = [
     title: "Impostore",
     category: "Juego de Fiesta / Social",
     description: "Un juego social de fiesta para jugar en grupo, donde todos reciben una palabra secreta... excepto el impostor. Los jugadores discuten, investigan e intentan descubrir quién no conoce la palabra.",
-    tags: ["Offline", "Fiesta", "Multijugador", "Kotlin", "Jetpack Compose"],
+    tags: ["Offline", "Fiesta", "Multijugador"],
     image: "/images/impostore/logo_impostore.png",
     banner: "/images/impostore/banner_impostore.png",
     isFeatured: true,
-    links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.impostore", details: "/impostore" }
+    links: { play: APP_LINKS.IMPOSTORE, details: "/impostore" }
   },
   {
     id: "diviso",
@@ -44,9 +45,9 @@ const PROJECTS = [
     category: "Finanzas / Utilidad",
     description: "Una aplicación móvil para dividir gastos de juntadas, viajes y salidas de forma simple. Registra consumos, reparte lo que pagó cada persona y calcula automáticamente cuánto debe cada uno.",
     tags: ["Gastos", "Cuentas", "Grupos", "RolJuntadas"],
-    image: "/images/diviso/logo_diviso.png",
+    image: "/images/diviso/foregroud_diviso.png",
     banner: "/images/diviso/banner_diviso.png",
-    links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.dividirgastos", details: "/diviso" }
+    links: { play: APP_LINKS.DIVISO, details: "/diviso" }
   },
   {
     id: "sbarra",
@@ -56,7 +57,7 @@ const PROJECTS = [
     tags: ["Mapas", "Calistenia", "Argentina", "Comunidad"],
     image: "/images/sbarra/logo_barras_finder.png",
     banner: "/images/sbarra/banner_barrasfinder.png",
-    links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.barrascalisteniapoint", details: "/sbarra" }
+    links: { play: APP_LINKS.SBARRA, details: "/sbarra" }
   },
   {
     id: "dados",
@@ -66,7 +67,8 @@ const PROJECTS = [
     tags: ["Dados", "Personalización", "Juegos de Mesa", "Rol"],
     image: "/images/fortuna/logo_fortuna.png",
     banner: "/images/fortuna/banner_fortuna.png",
-    links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.dadospersonalizados", details: "/fortuna" }
+    logoBgHex: "#2A94D5",
+    links: { play: APP_LINKS.FORTUNA, details: "/fortuna" }
   }
 ];
 
@@ -283,7 +285,7 @@ export default function Home() {
                         </div>
                       )}
                     </div>
-                    <div className="absolute -bottom-10 right-8 w-24 h-24 bg-white rounded-[1.5rem] shadow-xl border border-outline-variant/10 z-10 transition-transform group-hover:-translate-y-1">
+                    <div className="absolute -bottom-10 right-8 w-24 h-24 rounded-[1.5rem] shadow-xl border border-outline-variant/10 z-10 transition-transform group-hover:-translate-y-1" style={{ backgroundColor: project.logoBgHex || "#ffffff" }}>
                       <img
                         src={project.image}
                         alt={project.title}
@@ -304,7 +306,7 @@ export default function Home() {
                     </div>
                     <div className="flex gap-3 relative z-20">
                       <a href={project.links.play} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 bg-primary text-white px-4 py-2.5 rounded-xl text-xs font-bold hover:opacity-90 transition-opacity text-center flex items-center justify-center">Google Play</a>
-                      <Link to={project.links.details} onClick={(e) => { e.stopPropagation(); window.scrollTo(0, 0); }} className="flex-1 border border-outline-variant px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-surface-container-low transition-colors text-center flex items-center justify-center">Detalles</Link>
+                      <button onClick={(e) => { e.stopPropagation(); window.scrollTo(0, 0); navigate(project.links.details); }} className="flex-1 border border-outline-variant px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-surface-container-low transition-colors text-center flex items-center justify-center">Detalles</button>
                     </div>
                   </div>
                 </motion.div>

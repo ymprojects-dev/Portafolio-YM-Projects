@@ -10,7 +10,7 @@ export default function DivisoTerminos() {
       hasPhysicalRisks={false}
       developerName="YM Projects"
       contactEmail="ym.projects.compose@gmail.com"
-      iconPath="/images/diviso/logo_diviso.png"
+      iconPath="/images/diviso/foregroud_diviso.png"
       returnRoute="/diviso"
       lastUpdated="11 de abril de 2026"
     />

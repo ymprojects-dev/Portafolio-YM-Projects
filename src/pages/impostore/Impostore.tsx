@@ -4,8 +4,10 @@ import AppHero from "../../components/app/AppHero";
 import AppGallery from "../../components/app/AppGallery";
 import AppCTA from "../../components/app/AppCTA";
 import AppFooter from "../../components/app/AppFooter";
+import { APP_LINKS } from "../../constants";
 
 export default function Impostore() {
+  const PRIMARY_COLOR = "#2A94D5";
   const [players, setPlayers] = useState(["Mati", "Pedro", "Lu", "Agus", "Vale"]);
   const [playerName, setPlayerName] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>(["animales", "gastronomia", "famosos", "deportes", "tecnologia"]);
@@ -43,8 +45,8 @@ export default function Impostore() {
       <AppNavbar 
         appName="Impostore"
         logoSrc="/images/impostore/foreground_impostore.png"
-        primaryColor="#2A94D5"
-        downloadUrl="https://play.google.com/store/apps/details?id=com.ymprojects.impostore&pli=1"
+        primaryColor={PRIMARY_COLOR}
+        downloadUrl={APP_LINKS.IMPOSTORE}
         navLinks={[
           { id: 'inicio', label: 'Inicio', href: '#inicio', isInternal: true },
           { id: 'como-jugar', label: 'Como jugar', href: '#como-jugar', isInternal: true },
@@ -58,10 +60,10 @@ export default function Impostore() {
         badgeText="El mejor juego de deducción social"
         subtitle="Descubrí al impostor entre tus amigos en este juego social de palabras."
         description="Un emocionante juego social para jugar en persona con amigos o familia. Engaña, deduce e investiga tu camino a la victoria."
-        primaryColor="#2A94D5"
+        primaryColor={PRIMARY_COLOR}
         logoSrc="/images/impostore/logo_impostore.png"
         logoBgColor="white"
-        downloadUrl="https://play.google.com/store/apps/details?id=com.ymprojects.impostore&pli=1"
+        downloadUrl={APP_LINKS.IMPOSTORE}
         gradientStart="#fefefe"
         gradientEnd="#e6f4fc"
       />
@@ -493,7 +495,7 @@ export default function Impostore() {
       <AppCTA 
         title={<>¿Listo para descubrir al<br/>impostor?</>}
         description="Descargá Impostore ahora y convertí cualquier reunión en una partida inolvidable."
-        downloadUrl="https://play.google.com/store/apps/details?id=com.ymprojects.impostore&pli=1"
+        downloadUrl={APP_LINKS.IMPOSTORE}
         primaryColor="#2A94D5"
       />
 

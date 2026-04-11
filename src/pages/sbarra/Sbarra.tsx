@@ -4,6 +4,7 @@ import AppHero from "../../components/app/AppHero";
 import AppGallery from "../../components/app/AppGallery";
 import AppCTA from "../../components/app/AppCTA";
 import AppFooter from "../../components/app/AppFooter";
+import { APP_LINKS } from "../../constants";
 
 export default function Sbarra() {
   const PRIMARY_COLOR = "#7C293D";
@@ -24,7 +25,7 @@ export default function Sbarra() {
         appName="Sbarra"
         logoSrc="/images/sbarra/foreground_sbarra.png"
         primaryColor={PRIMARY_COLOR}
-        downloadUrl="https://play.google.com/store/apps/details?id=com.ymprojects.barrascalisteniapoint"
+        downloadUrl={APP_LINKS.SBARRA}
         navLinks={[
           { id: 'inicio', label: 'Inicio', href: '#inicio', isInternal: true },
           { id: 'galeria', label: 'Cómo se ve', href: '#galeria', isInternal: true },
@@ -43,7 +44,7 @@ export default function Sbarra() {
         gradientStart="#fefefe"
         gradientEnd="#fceef1"
         secondaryActionText=""
-        downloadUrl="https://play.google.com/store/apps/details?id=com.ymprojects.barrascalisteniapoint"
+        downloadUrl={APP_LINKS.SBARRA}
       />
 
       <AppGallery
@@ -55,7 +56,7 @@ export default function Sbarra() {
         title={<>¿Listo para mejorar<br />tu entrenamiento?</>}
         description="Descarga Sbarra y encuentra el lugar ideal para tu próxima rutina de calistenia."
         primaryColor={PRIMARY_COLOR}
-        downloadUrl="https://play.google.com/store/apps/details?id=com.ymprojects.barrascalisteniapoint"
+        downloadUrl={APP_LINKS.SBARRA}
       />
 
       <AppFooter
