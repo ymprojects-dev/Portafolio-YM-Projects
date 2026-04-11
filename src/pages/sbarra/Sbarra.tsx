@@ -7,7 +7,7 @@ import AppFooter from "../../components/app/AppFooter";
 
 export default function Sbarra() {
   const PRIMARY_COLOR = "#7C293D";
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Sbarra";
@@ -19,8 +19,8 @@ export default function Sbarra() {
 
   return (
     <div className={`bg-[#f2f5f6] text-slate-800 font-sans min-h-screen overflow-x-hidden`} style={{ '--primary-color': PRIMARY_COLOR } as React.CSSProperties}>
-      
-      <AppNavbar 
+
+      <AppNavbar
         appName="Sbarra"
         logoSrc="/images/sbarra/foreground_sbarra.png"
         primaryColor={PRIMARY_COLOR}
@@ -31,12 +31,12 @@ export default function Sbarra() {
         ]}
       />
 
-      <AppHero 
+      <AppHero
         appName="Sbarra"
-        badgeIcon="rule"
-        badgeText="La mejor forma de organizarte"
-        subtitle="Organiza tu rutina de manera inteligente y sencilla."
-        description="Una aplicación diseñada para ayudarte a mantener tus hábitos diarios y mejorar tu productividad día a día."
+        badgeIcon="location_on"
+        badgeText="+1.000 barras en Argentina y Chile"
+        subtitle="Encuentra barras de calistenia cerca de ti."
+        description="Explora diferentes ubicaciones y descubre nuevas oportunidades para realizar ejercicio al aire libre. Mira fotos, comentarios y cómo llegar."
         primaryColor={PRIMARY_COLOR}
         logoSrc="/images/sbarra/foreground_sbarra.png"
         logoBgColor="#ffffff"
@@ -46,21 +46,21 @@ export default function Sbarra() {
         downloadUrl="https://play.google.com/store/apps/details?id=com.ymprojects.barrascalisteniapoint"
       />
 
-      <AppGallery 
+      <AppGallery
         appName="Sbarra"
         screenshots={[]}
       />
 
-      <AppCTA 
-        title={<>¿Listo para organizar<br/>tu día a día?</>}
-        description="Comienza a usar Sbarra gratis y descubre cómo mejorar tus rutinas."
+      <AppCTA
+        title={<>¿Listo para mejorar<br />tu entrenamiento?</>}
+        description="Descarga Sbarra y encuentra el lugar ideal para tu próxima rutina de calistenia."
         primaryColor={PRIMARY_COLOR}
         downloadUrl="https://play.google.com/store/apps/details?id=com.ymprojects.barrascalisteniapoint"
       />
 
-      <AppFooter 
+      <AppFooter
         appName="Sbarra"
-        tagline="Tu rutina organizada."
+        tagline="Tu buscador de barras de calistenia."
         privacyRoute="/sbarra/privacidad"
         termsRoute="/sbarra/terminos"
         deleteAccountRoute="/sbarra/delete-account"
