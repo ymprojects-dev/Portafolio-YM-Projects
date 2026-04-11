@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import AppNavbar from "../../components/app/AppNavbar";
+import AppHero from "../../components/app/AppHero";
+import AppGallery from "../../components/app/AppGallery";
+import AppCTA from "../../components/app/AppCTA";
+import AppFooter from "../../components/app/AppFooter";
 
 export default function Impostore() {
   const [players, setPlayers] = useState(["Mati", "Pedro", "Lu", "Agus", "Vale"]);
@@ -36,58 +40,31 @@ export default function Impostore() {
 
   return (
     <div className="bg-[#f2f5f6] text-slate-800 font-sans selection:bg-blue-200 selection:text-blue-900 min-h-screen overflow-x-hidden">
-      {/* Top Navigation Bar */}
-      <nav className="absolute top-0 w-full z-50">
-        <div className="flex justify-between items-center w-full px-8 py-6 max-w-7xl mx-auto">
-          <Link to="/" className="flex items-center gap-3">
-            <img src="/images/impostore/foreground_impostore.png" alt="Logo" className="w-10 h-10 object-contain" />
-            <span className="text-2xl font-black text-slate-900 tracking-tighter">Impostore</span>
-          </Link>
-          <div className="hidden md:flex items-center gap-8 font-semibold text-sm">
-            <a className="text-[#2A94D5] border-b-2 border-[#2A94D5] pb-1" href="#inicio">Inicio</a>
-            <a className="text-slate-600 hover:text-[#2A94D5] transition-colors" href="#como-jugar">Como jugar</a>
-            <a className="text-slate-600 hover:text-[#2A94D5] transition-colors" href="#galeria">Cómo se ve</a>
-          </div>
-          <a href="https://play.google.com/store/apps/details?id=com.ymprojects.impostore&pli=1" target="_blank" rel="noopener noreferrer" className="bg-[#2A94D5] text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-md hover:scale-105 active:scale-95 duration-200 transition-all">
-            Descargar
-          </a>
-        </div>
-      </nav>
+      <AppNavbar 
+        appName="Impostore"
+        logoSrc="/images/impostore/foreground_impostore.png"
+        primaryColor="#2A94D5"
+        downloadUrl="https://play.google.com/store/apps/details?id=com.ymprojects.impostore&pli=1"
+        navLinks={[
+          { id: 'inicio', label: 'Inicio', href: '#inicio', isInternal: true },
+          { id: 'como-jugar', label: 'Como jugar', href: '#como-jugar', isInternal: true },
+          { id: 'galeria', label: 'Cómo se ve', href: '#galeria', isInternal: true },
+        ]}
+      />
 
-      {/* Hero Section */}
-      <section className="pt-40 pb-20 px-6 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #fefefe 0%, #e6f4fc 100%)' }} id="inicio">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
-          <div className="relative z-10 text-center lg:text-left pt-6">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6e6fa] text-[#2A94D5] text-sm font-bold mb-8">
-              <span className="material-symbols-outlined text-[16px]">celebration</span>
-              El mejor juego de deducción social
-            </div>
-            <h1 className="text-6xl md:text-[5rem] font-black text-[#27272a] leading-[1.1] tracking-tight mb-6">
-              Impostore
-            </h1>
-            <p className="text-2xl md:text-3xl font-bold text-[#2A94D5] mb-6 leading-snug max-w-[500px] mx-auto lg:mx-0">
-              Descubrí al impostor entre tus amigos en este juego social de palabras.
-            </p>
-            <p className="text-base md:text-lg text-slate-500 max-w-lg mb-10 leading-relaxed mx-auto lg:mx-0">
-              Un emocionante juego social para jugar en persona con amigos o familia. Engaña, deduce e investiga tu camino a la victoria.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <a href="https://play.google.com/store/apps/details?id=com.ymprojects.impostore&pli=1" target="_blank" rel="noopener noreferrer" className="bg-[#2A94D5] text-white px-8 py-4 rounded-full font-bold text-base flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-transform">
-                <span className="material-symbols-outlined text-[20px]">download</span>
-                Descargar en Google Play
-              </a>
-              <a href="#como-jugar" className="bg-[#e4e8eb] text-slate-800 px-8 py-4 rounded-full font-bold text-base hover:bg-[#d6dcde] transition-colors">
-                ¿Cómo jugar?
-              </a>
-            </div>
-          </div>
-          <div className="relative flex justify-center items-center">
-            <div className="bg-white rounded-[2.5rem] p-10 shadow-[0_20px_60px_-15px_rgba(42,148,213,0.3)] w-full max-w-[480px] aspect-square flex items-center justify-center">
-              <img src="/images/impostore/logo_impostore.png" alt="Impostore logomark" className="w-full h-full object-contain" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <AppHero 
+        appName="Impostore"
+        badgeIcon="celebration"
+        badgeText="El mejor juego de deducción social"
+        subtitle="Descubrí al impostor entre tus amigos en este juego social de palabras."
+        description="Un emocionante juego social para jugar en persona con amigos o familia. Engaña, deduce e investiga tu camino a la victoria."
+        primaryColor="#2A94D5"
+        logoSrc="/images/impostore/logo_impostore.png"
+        logoBgColor="white"
+        downloadUrl="https://play.google.com/store/apps/details?id=com.ymprojects.impostore&pli=1"
+        gradientStart="#fefefe"
+        gradientEnd="#e6f4fc"
+      />
 
       {/* How to Play Section */}
       <section className="py-20 px-6 relative" id="como-jugar">
@@ -499,69 +476,33 @@ export default function Impostore() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="py-16 px-6" id="galeria">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111111] tracking-tight mb-12">Así se ve Impostore</h2>
+      <AppGallery 
+        appName="Impostore"
+        screenshots={[
+          "/images/impostore/screenshots/Screenshot_20260409_002000.png",
+          "/images/impostore/screenshots/Screenshot_20260409_002036.png",
+          "/images/impostore/screenshots/Screenshot_20260409_002056.png",
+          "/images/impostore/screenshots/Screenshot_20260409_002124.png",
+          "/images/impostore/screenshots/Screenshot_20260409_002202.png",
+          "/images/impostore/screenshots/Screenshot_20260409_002225.png",
+          "/images/impostore/screenshots/Screenshot_20260409_002638.png",
+          "/images/impostore/screenshots/Screenshot_20260409_002644.png",
+        ]}
+      />
 
-          <div className="w-full [mask-image:linear-gradient(to_right,transparent_0%,black_32px,black_calc(100%-32px),transparent_100%)]">
-            <div className="flex overflow-x-auto gap-6 pb-8 pt-4 px-8 snap-x [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-slate-200 [&::-webkit-scrollbar-thumb]:rounded-full">
-              {[
-                "Screenshot_20260409_002000.png",
-                "Screenshot_20260409_002036.png",
-                "Screenshot_20260409_002056.png",
-                "Screenshot_20260409_002124.png",
-                "Screenshot_20260409_002202.png",
-                "Screenshot_20260409_002225.png",
-                "Screenshot_20260409_002638.png",
-                "Screenshot_20260409_002644.png",
-              ].map((imgSrc, i) => (
-                <div key={i} className="w-48 h-96 bg-[#212121] rounded-[32px] p-2 shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-slate-800 shrink-0 snap-center transition-transform duration-300 hover:-translate-y-2">
-                  <img
-                    src={`/images/impostore/screenshots/${imgSrc}`}
-                    alt={`Captura ${i + 1}`}
-                    className="w-full h-full object-cover rounded-[24px]"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <AppCTA 
+        title={<>¿Listo para descubrir al<br/>impostor?</>}
+        description="Descargá Impostore ahora y convertí cualquier reunión en una partida inolvidable."
+        downloadUrl="https://play.google.com/store/apps/details?id=com.ymprojects.impostore&pli=1"
+        primaryColor="#2A94D5"
+      />
 
-      {/* CTA Bottom Section */}
-      <section className="bg-[#2A94D5] py-24 px-6 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight">
-            ¿Listo para descubrir al<br />impostor?
-          </h2>
-          <p className="text-blue-100 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-            Descargá Impostore ahora y convertí cualquier reunión en una partida inolvidable.
-          </p>
-          <a href="https://play.google.com/store/apps/details?id=com.ymprojects.impostore&pli=1" target="_blank" rel="noopener noreferrer" className="inline-flex bg-white text-[#2A94D5] px-8 py-4 rounded-full font-bold text-sm items-center justify-center gap-2 shadow-xl hover:scale-105 transition-transform">
-            <span className="material-symbols-outlined text-[20px]">download</span>
-            Descargar en Google Play
-          </a>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="w-full bg-[#f2f5f6] border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 py-10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-slate-500">
-            <div className="flex flex-col items-center md:items-start">
-              <span className="font-bold text-slate-700 text-sm mb-1">Impostore</span>
-              <p>© 2026 Impostore. El juego de fiesta social.</p>
-            </div>
-            <div className="flex gap-6 font-medium">
-              <Link to="/impostore/privacidad" className="hover:text-slate-800 transition-colors">Privacidad</Link>
-              <Link to="/impostore/terminos" className="hover:text-slate-800 transition-colors">Términos</Link>
-              <a href="#" className="hover:text-slate-800 transition-colors">Soporte</a>
-              <a href="#" className="hover:text-slate-800 transition-colors">Contacto</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <AppFooter 
+        appName="Impostore"
+        tagline="El juego de fiesta social."
+        privacyRoute="/impostore/privacidad"
+        termsRoute="/impostore/terminos"
+      />
     </div>
   );
 }

@@ -49,14 +49,14 @@ const PROJECTS = [
     links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.dadospersonalizados", details: "/dados" }
   },
   {
-    id: "barrasfinder",
-    title: "BarrasFinder",
+    id: "sbarra",
+    title: "Sbarra - Buscá tu barra",
     category: "Fitness / Utilidad",
     description: "Una aplicación móvil para encontrar barras de calistenia en Argentina. Explora ubicaciones cercanas, mira detalles, fotos, comentarios y guarda tus favoritas.",
     tags: ["Mapas", "Calistenia", "Argentina", "Comunidad"],
-    image: "/images/barras_finder/logo_barras_finder.png",
-    banner: "/images/barras_finder/banner_barrasfinder.png",
-    links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.barrascalisteniapoint", details: "/barrasfinder" }
+    image: "/images/sbarra/logo_barras_finder.png",
+    banner: "/images/sbarra/banner_barrasfinder.png",
+    links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.barrascalisteniapoint", details: "/sbarra" }
   },
   {
     id: "dados",
@@ -64,8 +64,8 @@ const PROJECTS = [
     category: "Herramientas / Entretenimiento",
     description: "Una aplicación de dados personalizable que permite elegir el número de dados y caras, ideal para juegos de mesa y juegos de rol.",
     tags: ["Dados", "Personalización", "Juegos de Mesa", "Rol"],
-    image: "/images/dados_personalizados/logo_dados_personalizados.png",
-    banner: "/images/dados_personalizados/banner_diviso.png",
+    image: "/images/fortuna/logo_fortuna.png",
+    banner: "/images/fortuna/banner_fortuna.png",
     links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.dadospersonalizados", details: "/dados" }
   }
 ];

@@ -1,9 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Impostore from "./pages/Impostore";
+import Impostore from "./pages/impostore/Impostore";
 
-import ImpostoreTerminos from "./pages/ImpostoreTerminos";
-import ImpostorePrivacidad from "./pages/ImpostorePrivacidad";
+import ImpostoreTerminos from "./pages/impostore/ImpostoreTerminos";
+import ImpostorePrivacidad from "./pages/impostore/ImpostorePrivacidad";
+import Sbarra from "./pages/sbarra/Sbarra";
+import SbarraDeleteAccount from "./pages/sbarra/SbarraDeleteAccount";
+import SbarraPrivacidad from "./pages/sbarra/SbarraPrivacidad";
+import SbarraTerminos from "./pages/sbarra/SbarraTerminos";
 
 export default function App() {
   return (
@@ -13,6 +17,10 @@ export default function App() {
         <Route path="/impostore" element={<Impostore />} />
         <Route path="/impostore/terminos" element={<ImpostoreTerminos />} />
         <Route path="/impostore/privacidad" element={<ImpostorePrivacidad />} />
+        <Route path="/sbarra" element={<Sbarra />} />
+        <Route path="/sbarra/terminos" element={<SbarraTerminos />} />
+        <Route path="/sbarra/delete-account" element={<SbarraDeleteAccount />} />
+        <Route path="/sbarra/privacidad" element={<SbarraPrivacidad />} />
         {/* Placeholder for other routes */}
         <Route path="/barrasfinder" element={<Home />} />
         <Route path="/dados" element={<Home />} />
