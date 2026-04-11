@@ -33,9 +33,9 @@ const PROJECTS = [
     title: "Impostore",
     category: "Juego de Fiesta / Social",
     description: "Un juego social de fiesta para jugar en grupo, donde todos reciben una palabra secreta... excepto el impostor. Los jugadores discuten, investigan e intentan descubrir quién no conoce la palabra.",
-    tags: ["Offline", "Fiesta", "Multijugador"],
+    tags: ["Offline", "Fiesta", "Multijugador", "Rol"],
     image: "/images/impostore/logo_impostore.png",
-    banner: "/images/impostore/banner_impostore.png",
+    banner: "/images/impostore/banner_impostore.png?v=1",
     isFeatured: true,
     links: { play: APP_LINKS.IMPOSTORE, details: "/impostore" }
   },
@@ -44,9 +44,9 @@ const PROJECTS = [
     title: "Diviso - Dividir Gastos",
     category: "Finanzas / Utilidad",
     description: "Una aplicación móvil para dividir gastos de juntadas, viajes y salidas de forma simple. Registra consumos, reparte lo que pagó cada persona y calcula automáticamente cuánto debe cada uno.",
-    tags: ["Gastos", "Cuentas", "Grupos", "RolJuntadas"],
+    tags: ["Gastos", "Cuentas", "Grupos", "Juntadas"],
     image: "/images/diviso/foregroud_diviso.png",
-    banner: "/images/diviso/banner_diviso.png",
+    banner: "/images/diviso/banner_diviso.png?v=1",
     links: { play: APP_LINKS.DIVISO, details: "/diviso" }
   },
   {
@@ -54,19 +54,19 @@ const PROJECTS = [
     title: "Sbarra - Buscá tu barra",
     category: "Fitness / Utilidad",
     description: "Una aplicación móvil para encontrar barras de calistenia en Argentina. Explora ubicaciones cercanas, mira detalles, fotos, comentarios y guarda tus favoritas.",
-    tags: ["Mapas", "Calistenia", "Argentina", "Comunidad"],
+    tags: ["Mapas", "Calistenia", "Comunidad"],
     image: "/images/sbarra/logo_barras_finder.png",
     banner: "/images/sbarra/banner_barrasfinder.png",
     links: { play: APP_LINKS.SBARRA, details: "/sbarra" }
   },
   {
-    id: "dados",
-    title: "Dados Personalizados",
+    id: "fortuna",
+    title: "Fortuna - Dados Personalizados",
     category: "Herramientas / Entretenimiento",
     description: "Una aplicación de dados personalizable que permite elegir el número de dados y caras, ideal para juegos de mesa y juegos de rol.",
-    tags: ["Dados", "Personalización", "Juegos de Mesa", "Rol"],
+    tags: ["Dados", "Personalización", "Juegos de Mesa"],
     image: "/images/fortuna/logo_fortuna.png",
-    banner: "/images/fortuna/banner_fortuna.png",
+    banner: "/images/fortuna/banner_fortuna.png?v=1",
     logoBgHex: "#2A94D5",
     links: { play: APP_LINKS.FORTUNA, details: "/fortuna" }
   }
@@ -197,21 +197,21 @@ export default function Home() {
               <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-primary/5 rounded-full blur-3xl"></div>
               <div className="bg-white p-4 rounded-[3rem] shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700 ambient-shadow">
                 <img
-                  src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=1000"
-                  alt="App Mockup"
+                  src="/images/phone_apps_ym.png"
+                  alt="YM Projects Apps"
                   className="rounded-[2.5rem] w-full aspect-[9/16] object-cover"
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl max-w-[240px] border border-surface-container-high">
+              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl max-w-[280px] border border-surface-container-high">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 bg-primary/10 rounded-lg">
                     <Zap className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="font-bold text-sm">Fláidez Total</span>
+                  <span className="font-bold text-sm">Apps Multiplataforma</span>
                 </div>
                 <p className="text-[11px] text-on-surface-variant leading-relaxed">
-                  Optimizado para animaciones fluidas a 120fps y cargas sin tiempos de espera.
+                  Diseño y desarrollo aplicaciones claras, rápidas y bien pensadas, cuidando tanto la experiencia del usuario como el funcionamiento real del producto.
                 </p>
               </div>
             </motion.div>
@@ -471,7 +471,7 @@ export default function Home() {
             <a href="https://github.com/ymprojects-dev" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
               <Github className="w-4 h-4" /> Github
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+            <a href="https://www.linkedin.com/in/matias-adrian-yelicich-2b2a28275/" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
               <Linkedin className="w-4 h-4" /> LinkedIn
             </a>
             <a href="https://play.google.com/store/apps/dev?id=8925538644696216986" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
