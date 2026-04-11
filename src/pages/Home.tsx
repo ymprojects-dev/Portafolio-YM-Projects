@@ -46,7 +46,7 @@ const PROJECTS = [
     tags: ["Gastos", "Cuentas", "Grupos", "RolJuntadas"],
     image: "/images/diviso/logo_diviso.png",
     banner: "/images/diviso/banner_diviso.png",
-    links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.dadospersonalizados", details: "/dados" }
+    links: { play: "https://play.google.com/store/apps/details?id=com.ymprojects.dividirgastos", details: "/diviso" }
   },
   {
     id: "sbarra",

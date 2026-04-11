@@ -13,6 +13,10 @@ import Fortuna from "./pages/fortuna/Fortuna";
 import FortunaPrivacidad from "./pages/fortuna/FortunaPrivacidad";
 import FortunaTerminos from "./pages/fortuna/FortunaTerminos";
 
+import Diviso from "./pages/diviso/Diviso";
+import DivisoPrivacidad from "./pages/diviso/DivisoPrivacidad";
+import DivisoTerminos from "./pages/diviso/DivisoTerminos";
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -28,6 +32,9 @@ export default function App() {
         <Route path="/fortuna" element={<Fortuna />} />
         <Route path="/fortuna/terminos" element={<FortunaTerminos />} />
         <Route path="/fortuna/privacidad" element={<FortunaPrivacidad />} />
+        <Route path="/diviso" element={<Diviso />} />
+        <Route path="/diviso/terminos" element={<DivisoTerminos />} />
+        <Route path="/diviso/privacidad" element={<DivisoPrivacidad />} />
         {/* Placeholder for other routes */}
         <Route path="/barrasfinder" element={<Home />} />
         <Route path="/dados" element={<Home />} />
