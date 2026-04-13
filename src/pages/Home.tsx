@@ -192,7 +192,7 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              className="relative w-full max-w-[280px] sm:max-w-[330px] lg:max-w-[300px] xl:max-w-[360px] mx-auto mt-12 lg:mt-0"
             >
               <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-primary/5 rounded-full blur-3xl"></div>
               <div className="bg-white p-4 rounded-[3rem] shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700 ambient-shadow">
@@ -319,7 +319,7 @@ export default function Home() {
         <section id="skills" className="bg-surface py-24 lg:py-32 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="mb-16">
-              <h2 className="text-4xl lg:text-5xl font-extrabold mb-6">Mí Experiencia</h2>
+              <h2 className="text-4xl lg:text-5xl font-extrabold mb-6">Mi Experiencia</h2>
               <p className="text-on-surface-variant text-lg max-w-md">Creando el puente perfecto entre un diseño centrado en humanos y arquitectura sólida.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

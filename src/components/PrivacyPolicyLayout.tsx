@@ -64,7 +64,7 @@ export default function PrivacyPolicyLayout({
           <p className="mb-4">{appName} emplea la información con el fin de proporcionar el mejor servicio posible y mejorar la experiencia de usuario. Particularmente para:</p>
           <ul className="list-[square] pl-6 space-y-4 mb-4">
             <li><span className="underline">Mantener un registro interno de usuarios</span> y mejorar nuestros productos de software.</li>
-            <li><span className="underline">Publicidad Personalizada:</span> Utilizar el ID de publicidad para mostrar anuncios que sean relevantes para el usuario a través de la red de Google AdMob.</li>
+            <li><span className="underline">Publicidad Personalizada:</span> Utilizar el ID de publicidad para mostrar anuncios que sean relevantes para el usuario a través de nuestras plataformas de mediación publicitaria, principalmente Appodeal, y sus socios integrados.</li>
             <li><span className="underline">Analíticas:</span> Utilizar herramientas como Firebase para entender el rendimiento de la aplicación, detectar errores técnicos y mejorar la estabilidad del sistema.</li>
             <li><span className="underline">Comunicaciones:</span> Es posible que se envíen correos electrónicos periódicamente con actualizaciones {appType === 'juego' ? 'del' : 'de la'} {appType}, nuevas funcionalidades o información publicitaria que consideremos relevante. Usted puede cancelar estas comunicaciones en cualquier momento.</li>
           </ul>
@@ -72,13 +72,13 @@ export default function PrivacyPolicyLayout({
           <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">3. Divulgación de datos a terceros (Proveedores de Servicios)</h3>
           <p className="mb-4">Para el correcto funcionamiento de la aplicación, compartimos datos limitados con los siguientes proveedores certificados:</p>
           <ul className="list-[square] pl-6 space-y-4 mb-4">
-            <li><span className="underline">Google AdMob:</span> Para la gestión y publicación de anuncios. AdMob puede utilizar los datos recopilados para personalizar la publicidad que usted ve.</li>
+            <li><span className="underline">Appodeal y Redes Publicitarias Asociadas:</span> Utilizamos Appodeal como plataforma de mediación de anuncios (y sus redes integradas como AppLovin, Unity Ads, BidMachine, entre otras). Estas entidades pueden recopilar y utilizar su dirección IP y el ID de publicidad (AD_ID) del dispositivo para ofrecer publicidad personalizada. Le sugerimos revisar la política de privacidad de Appodeal en: <a href="https://appodeal.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-[#2A94D5] hover:underline">https://appodeal.com/privacy-policy/</a>.</li>
             <li><span className="underline">Firebase (Google):</span> Para el análisis de datos, monitoreo de errores (Crashlytics) y configuración remota de la aplicación.</li>
             <li><span className="underline">Autoridades Legales:</span> Esta compañía no venderá ni distribuirá su información personal sin su consentimiento, salvo que sea requerido por un juez mediante una orden judicial específica.</li>
           </ul>
 
           <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">4. Tecnologías de Almacenamiento y Seguimiento</h3>
-          <p className="mb-4">Aunque comúnmente se les denomina "Cookies" en entornos web, en nuestra aplicación móvil utilizamos identificadores de publicidad y almacenamiento local en el dispositivo para:</p>
+          <p className="mb-4">Aunque comúnmente se les denomina "Cookies" en entornos web, en nuestra aplicación móvil utilizamos identificadores de publicidad y almacenamiento local en el dispositivo no solo para fines de almacenamiento, sino también para un seguimiento puro orientado a:</p>
           <ul className="list-[square] pl-6 space-y-4 mb-4">
             <li><span className="underline">Reconocer al usuario individualmente</span> y recordar sus preferencias en {appType === 'juego' ? 'el' : 'la'} {appType}.</li>
             <li><span className="underline">Analizar el tráfico y la frecuencia de uso</span> con fines estadísticos. Usted puede gestionar sus preferencias de privacidad y rastreo de anuncios directamente desde los ajustes de su dispositivo Android o a través del panel de consentimiento (CMP) proporcionado dentro de la aplicación.</li>
