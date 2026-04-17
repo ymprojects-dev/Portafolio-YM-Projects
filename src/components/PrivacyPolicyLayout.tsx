@@ -45,64 +45,59 @@ export default function PrivacyPolicyLayout({
       </nav>
 
       <div className="max-w-4xl mx-auto px-6 py-16">
-        <h1 className="text-4xl font-extrabold text-slate-900 mb-8">Políticas de Privacidad</h1>
+        <h1 className="text-4xl font-extrabold text-slate-900 mb-8">Política de Privacidad</h1>
         <div className="prose max-w-none text-slate-600 bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
           <p className="mb-8 font-medium">
-            La presente Política de Privacidad establece los términos en que {appName}, desarrollada por {companyName}, usa y protege la información que es proporcionada por sus usuarios al momento de utilizar la aplicación móvil. Esta compañía y su desarrollador están altamente comprometidos con la seguridad de los datos de sus usuarios. Cuando le pedimos llenar campos de información personal con la cual usted pueda ser identificado, lo hacemos asegurando que sólo se empleará de acuerdo con los términos de este documento.
+            La presente Política de Privacidad describe cómo {appName} (desarrollada por {companyName}) recopila, utiliza y protege la información de los usuarios. Nuestro objetivo es ser transparentes sobre los datos que procesamos y explicar cómo se utilizan dentro de {appType === 'juego' ? 'el juego' : 'la aplicación'}.
           </p>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">1. Información que es recogida</h3>
-          <p className="mb-4">Nuestra aplicación podrá recoger, tratar o almacenar la siguiente información:</p>
+          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">1. Información que recopilamos</h3>
+          <p className="mb-4">Nuestra aplicación puede recopilar y procesar los siguientes datos:</p>
           <ul className="list-[square] pl-6 space-y-4 mb-4">
-            <li><span className="underline">Información de Identificación Personal:</span> Nombre y dirección de correo electrónico proporcionada voluntariamente por el usuario para registros o soporte técnico.</li>
-            <li><span className="underline">Identificadores de Dispositivo:</span> Recopilamos el ID de publicidad de Google (AD_ID) para personalizar la experiencia publicitaria y realizar análisis internos.</li>
-            <li><span className="underline">Datos de Uso:</span> Información sobre cómo interactúa con la aplicación, frecuencia de uso y preferencias de {appType}.</li>
-            <li><span className="underline">Información Demográfica:</span> Datos como la ubicación aproximada (nivel de red) para optimizar la entrega de contenido y anuncios.</li>
+            <li><span className="underline">Identificadores del dispositivo:</span> Recopilamos el ID de publicidad de Android (Advertising ID / AD_ID) para la gestión y personalización de anuncios.</li>
+            <li><span className="underline">Información técnica y de red:</span> Datos generales sobre el dispositivo (modelo, versión del sistema operativo) y la conexión de red, necesarios para el funcionamiento y análisis técnico.</li>
+            <li><span className="underline">Ubicación aproximada:</span> Únicamente a nivel de red, y solo cuando resulte necesaria para la prestación de anuncios o servicios asociados, según la configuración del dispositivo y los servicios de terceros utilizados.</li>
+            <li><span className="underline">Datos de uso:</span> Información estadística sobre cómo se interactúa con la aplicación para identificar áreas de mejora.</li>
+            <li><span className="underline">Información de contacto:</span> Solo en caso de que el usuario se comunique voluntariamente con nosotros (por ejemplo, por correo electrónico) para solicitar soporte.</li>
           </ul>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">2. Uso de la información recogida</h3>
-          <p className="mb-4">{appName} emplea la información con el fin de proporcionar el mejor servicio posible y mejorar la experiencia de usuario. Particularmente para:</p>
+          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">2. Uso de la información</h3>
+          <p className="mb-4">Los datos recopilados se utilizan exclusivamente para los siguientes fines:</p>
           <ul className="list-[square] pl-6 space-y-4 mb-4">
-            <li><span className="underline">Mantener un registro interno de usuarios</span> y mejorar nuestros productos de software.</li>
-            <li><span className="underline">Publicidad Personalizada:</span> Utilizar el ID de publicidad para mostrar anuncios que sean relevantes para el usuario a través de nuestras plataformas de mediación publicitaria, principalmente Appodeal, y sus socios integrados.</li>
-            <li><span className="underline">Analíticas:</span> Utilizar herramientas como Firebase para entender el rendimiento de la aplicación, detectar errores técnicos y mejorar la estabilidad del sistema.</li>
-            <li><span className="underline">Comunicaciones:</span> Es posible que se envíen correos electrónicos periódicamente con actualizaciones {appType === 'juego' ? 'del' : 'de la'} {appType}, nuevas funcionalidades o información publicitaria que consideremos relevante. Usted puede cancelar estas comunicaciones en cualquier momento.</li>
+            <li><span className="underline">Funcionamiento y optimización:</span> Garantizar el rendimiento de la aplicación, detectar errores técnicos y aplicar mejoras.</li>
+            <li><span className="underline">Publicidad:</span> Mostrar anuncios relevantes a través de nuestras plataformas de mediación publicitaria.</li>
+            <li><span className="underline">Soporte:</span> Responder a consultas o problemas técnicos reportados por el usuario.</li>
           </ul>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">3. Divulgación de datos a terceros (Proveedores de Servicios)</h3>
-          <p className="mb-4">Para el correcto funcionamiento de la aplicación, compartimos datos limitados con los siguientes proveedores certificados:</p>
+          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">3. Proveedores de servicios y terceros</h3>
+          <p className="mb-4">Para operar y monetizar la aplicación de manera gratuita, integramos servicios de terceros que pueden procesar cierta información bajo sus propias políticas:</p>
           <ul className="list-[square] pl-6 space-y-4 mb-4">
-            <li><span className="underline">Appodeal y Redes Publicitarias Asociadas:</span> Utilizamos Appodeal como plataforma de mediación de anuncios (y sus redes integradas como AppLovin, Unity Ads, BidMachine, entre otras). Estas entidades pueden recopilar y utilizar su dirección IP y el ID de publicidad (AD_ID) del dispositivo para ofrecer publicidad personalizada. Le sugerimos revisar la política de privacidad de Appodeal en: <a href="https://appodeal.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-[#2A94D5] hover:underline">https://appodeal.com/privacy-policy/</a>.</li>
-            <li><span className="underline">Firebase (Google):</span> Para el análisis de datos, monitoreo de errores (Crashlytics) y configuración remota de la aplicación.</li>
-            <li><span className="underline">Autoridades Legales:</span> Esta compañía no venderá ni distribuirá su información personal sin su consentimiento, salvo que sea requerido por un juez mediante una orden judicial específica.</li>
+            <li><span className="underline">Appodeal y redes publicitarias asociadas:</span> Utilizamos Appodeal como plataforma principal de mediación publicitaria, la cual trabaja con múltiples redes de anuncios. Appodeal y sus socios pueden recopilar la dirección IP, el ID de publicidad (AD_ID), la ubicación aproximada y datos técnicos del dispositivo para mostrar anuncios personalizados y medir su rendimiento. Puede consultar los detalles en la política de privacidad de Appodeal: <a href="https://appodeal.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-[#2A94D5] hover:underline">https://appodeal.com/privacy-policy/</a>.</li>
+            <li><span className="underline">Firebase (Google):</span> Utilizamos estas herramientas para el análisis general de uso, el monitoreo de errores (Crashlytics) y la configuración remota.</li>
           </ul>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">4. Tecnologías de Almacenamiento y Seguimiento</h3>
-          <p className="mb-4">Aunque comúnmente se les denomina "Cookies" en entornos web, en nuestra aplicación móvil utilizamos identificadores de publicidad y almacenamiento local en el dispositivo no solo para fines de almacenamiento, sino también para un seguimiento puro orientado a:</p>
+          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">4. Tecnologías de seguimiento y almacenamiento local</h3>
+          <p className="mb-4">La aplicación utiliza identificadores de publicidad y almacenamiento local en el dispositivo para recordar preferencias del usuario, analizar el rendimiento general y gestionar la frecuencia y relevancia de los anuncios mostrados. Estas tecnologías se utilizan dentro del contexto de la aplicación para recordar preferencias, analizar el rendimiento y gestionar la entrega de anuncios.</p>
+
+          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">5. Control y derechos del usuario</h3>
+          <p className="mb-4">Los usuarios tienen derecho a controlar su información de la siguiente manera:</p>
           <ul className="list-[square] pl-6 space-y-4 mb-4">
-            <li><span className="underline">Reconocer al usuario individualmente</span> y recordar sus preferencias en {appType === 'juego' ? 'el' : 'la'} {appType}.</li>
-            <li><span className="underline">Analizar el tráfico y la frecuencia de uso</span> con fines estadísticos. Usted puede gestionar sus preferencias de privacidad y rastreo de anuncios directamente desde los ajustes de su dispositivo Android o a través del panel de consentimiento (CMP) proporcionado dentro de la aplicación.</li>
+            <li><span className="underline">Exclusión de anuncios personalizados:</span> Puede desactivar la personalización de anuncios y restablecer el ID de publicidad en cualquier momento desde los ajustes de privacidad de su dispositivo Android.</li>
+            <li><span className="underline">Panel de consentimiento:</span> Dependiendo de su región, la aplicación puede incluir un panel de consentimiento (CMP) que le permite aceptar o rechazar el procesamiento de datos con fines publicitarios.</li>
+            <li><span className="underline">Derechos y eliminación (Privacy Global y GDPR):</span> Si proporcionó información de contacto para soporte o aplica alguna normativa como GDPR, tiene derecho al acceso, rectificación o eliminación de esos datos. Para ejercerlos, contáctenos en: {contactEmail}.</li>
           </ul>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">5. Derechos de los usuarios (GDPR y Privacidad Global)</h3>
-          <p className="mb-4">Si usted es residente del Espacio Económico Europeo (EEE), cuenta con derechos específicos protegidos por el GDPR:</p>
-          <ul className="list-square pl-6 space-y-4 mb-4">
-            <li><span className="underline">Derecho de Acceso y Rectificación:</span> Puede solicitar conocer qué datos tenemos de usted y corregirlos.</li>
-            <li><span className="underline">Derecho de Revocación:</span> Puede retirar su consentimiento para el procesamiento de anuncios personalizados en cualquier momento.</li>
-            <li><span className="underline">Derecho de Eliminación:</span> Puede solicitar que eliminemos su registro de usuario y datos asociados. Para ejercer cualquier derecho, puede contactarnos a través del correo electrónico: {contactEmail}.</li>
-          </ul>
+          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">6. Seguridad de los datos</h3>
+          <p className="mb-4">Adoptamos medidas técnicas y organizativas razonables para proteger la información procesada por la aplicación frente a accesos, alteraciones, divulgaciones o destrucción no autorizadas.</p>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">6. Seguridad de la Información</h3>
-          <p className="mb-4">Estamos profundamente comprometidos con la seguridad de su información. Implementamos las medidas técnicas y organizativas necesarias, como el uso de servidores seguros y actualizaciones constantes de software, para evitar accesos no autorizados y garantizar que su información esté protegida en todo momento.</p>
+          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">7. Enlaces externos</h3>
+          <p className="mb-4">La aplicación, especialmente a través de los anuncios publicitarios, puede contener enlaces a sitios web o servicios de terceros. No somos responsables de las prácticas de privacidad ni del contenido de dichos sitios. Le recomendamos leer sus políticas externas en caso de visitarlos o interactuar con ellos.</p>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">7. Enlaces a Terceros</h3>
-          <p className="mb-4">{appName} puede contener enlaces a otros sitios web o aplicaciones que puedan ser de su interés. Una vez que usted haga clic en estos enlaces y abandone nuestra aplicación, no tenemos control sobre el sitio al que es redirigido y, por lo tanto, no somos responsables de los términos o la protección de sus datos en esos sitios terceros.</p>
+          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">8. Privacidad infantil</h3>
+          <p className="mb-4">No recopilamos intencionalmente información de menores de 13 años. Si usted es tutor legal y detecta que se nos ha proporcionado información de un menor, contáctenos para proceder con su eliminación inmediata.</p>
 
-          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">8. Privacidad de Menores</h3>
-          <p className="mb-4">Nuestra aplicación es apta para diversas edades, pero no recopilamos intencionadamente datos personales de niños menores de 13 años. Si usted es padre o tutor y descubre que su hijo nos ha proporcionado datos personales, por favor contáctenos para proceder con su eliminación inmediata.</p>
-
-          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">9. Cambios en la Política de Privacidad</h3>
-          <p className="mb-4">{appName} se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento. Le recomendamos revisar continuamente este documento dentro de la aplicación o en nuestro sitio oficial para asegurarse de que está de acuerdo con los términos vigentes.</p>
+          <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">9. Modificaciones a la Política de Privacidad</h3>
+          <p className="mb-4">Nos reservamos el derecho de actualizar esta Política de Privacidad para reflejar cambios en nuestras prácticas o requisitos legales. Le sugerimos revisar este documento periódicamente dentro de la aplicación o en nuestro sitio oficial para mantenerse informado sobre las condiciones vigentes.</p>
         </div>
         <div className="mt-6 text-center">
           <p className="text-sm font-medium text-slate-500">Última actualización: {lastUpdated}.</p>
