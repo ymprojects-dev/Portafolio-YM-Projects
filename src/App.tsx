@@ -17,6 +17,7 @@ import FortunaTerminos from "./pages/fortuna/FortunaTerminos";
 import Diviso from "./pages/diviso/Diviso";
 import DivisoPrivacidad from "./pages/diviso/DivisoPrivacidad";
 import DivisoTerminos from "./pages/diviso/DivisoTerminos";
+import DivisoDeleteAccount from "./pages/diviso/DivisoDeleteAccount";
 
 export default function App() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="/diviso" element={<Diviso />} />
         <Route path="/diviso/terminos" element={<DivisoTerminos />} />
         <Route path="/diviso/privacidad" element={<DivisoPrivacidad />} />
+        <Route path="/diviso/delete-account" element={<DivisoDeleteAccount />} />
       </Routes>
     </BrowserRouter>
   );

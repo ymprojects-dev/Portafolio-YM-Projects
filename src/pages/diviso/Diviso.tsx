@@ -64,6 +64,7 @@ export default function Diviso() {
         tagline="Dividir Gastos"
         privacyRoute="/diviso/privacidad"
         termsRoute="/diviso/terminos"
+        deleteAccountRoute="/diviso/delete-account"
       />
     </div>
   );
