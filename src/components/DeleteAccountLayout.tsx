@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import AppFooter from "./app/AppFooter";
+
 export interface DeleteAccountLayoutProps {
   appName: string;
   appLogoUrl: string;
@@ -9,6 +11,11 @@ export interface DeleteAccountLayoutProps {
   primaryHoverClass: string;
   dataTypesList: string[];
   appPurpose: string;
+  tagline?: string;
+  homeRoute?: string;
+  privacyRoute?: string;
+  termsRoute?: string;
+  deleteAccountRoute?: string;
 }
 
 export default function DeleteAccountLayout({
@@ -19,6 +26,11 @@ export default function DeleteAccountLayout({
   primaryHoverClass,
   dataTypesList,
   appPurpose,
+  tagline = "Eliminar Cuenta",
+  homeRoute,
+  privacyRoute,
+  termsRoute,
+  deleteAccountRoute,
 }: DeleteAccountLayoutProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -80,6 +92,14 @@ export default function DeleteAccountLayout({
           <p className="text-sm font-medium text-slate-500">Última actualización: 11 de abril de 2026.</p>
         </div>
       </div>
+      <AppFooter
+        appName={appName}
+        tagline={tagline}
+        homeRoute={homeRoute || backLinkUrl}
+        privacyRoute={privacyRoute}
+        termsRoute={termsRoute}
+        deleteAccountRoute={deleteAccountRoute}
+      />
     </div>
   );
 }

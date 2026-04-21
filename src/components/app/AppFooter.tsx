@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 interface AppFooterProps {
   appName: string;
   tagline: string;
+  homeRoute?: string;
   privacyRoute?: string;
   termsRoute?: string;
   deleteAccountRoute?: string;
@@ -11,6 +12,7 @@ interface AppFooterProps {
 export default function AppFooter({
   appName,
   tagline,
+  homeRoute,
   privacyRoute,
   termsRoute,
   deleteAccountRoute
@@ -26,6 +28,9 @@ export default function AppFooter({
             <p>© {currentYear} {appName.replace(' App', '')}. {tagline}</p>
           </div>
           <div className="flex flex-wrap justify-center gap-6 font-medium">
+            {homeRoute && (
+              <Link to={homeRoute} className="hover:text-slate-800 transition-colors">Inicio</Link>
+            )}
             {privacyRoute && (
               <Link to={privacyRoute} className="hover:text-slate-800 transition-colors">Privacidad</Link>
             )}

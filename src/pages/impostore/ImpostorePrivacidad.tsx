@@ -8,6 +8,8 @@ export default function ImpostorePrivacidad() {
       iconPath="/images/impostore/foreground_impostore.png"
       returnRoute="/impostore"
       lastUpdated="25 de enero de 2026"
+      privacyRoute="/impostore/privacidad"
+      termsRoute="/impostore/terminos"
     />
   );
 }

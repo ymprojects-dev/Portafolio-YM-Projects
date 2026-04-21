@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import AppFooter from "./app/AppFooter";
+
 interface PrivacyPolicyProps {
   appName: string;
   appType?: "aplicación" | "juego";
@@ -9,6 +11,11 @@ interface PrivacyPolicyProps {
   returnRoute: string;
   lastUpdated: string;
   contactEmail?: string;
+  tagline?: string;
+  homeRoute?: string;
+  privacyRoute?: string;
+  termsRoute?: string;
+  deleteAccountRoute?: string;
 }
 
 export default function PrivacyPolicyLayout({
@@ -19,6 +26,11 @@ export default function PrivacyPolicyLayout({
   returnRoute,
   lastUpdated,
   contactEmail = "ym.projects.dev+soporte@gmail.com",
+  tagline = "Políticas de Privacidad",
+  homeRoute,
+  privacyRoute,
+  termsRoute,
+  deleteAccountRoute,
 }: PrivacyPolicyProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -103,6 +115,14 @@ export default function PrivacyPolicyLayout({
           <p className="text-sm font-medium text-slate-500">Última actualización: {lastUpdated}.</p>
         </div>
       </div>
+      <AppFooter
+        appName={appName}
+        tagline={tagline}
+        homeRoute={homeRoute || returnRoute}
+        privacyRoute={privacyRoute}
+        termsRoute={termsRoute}
+        deleteAccountRoute={deleteAccountRoute}
+      />
     </div>
   );
 }

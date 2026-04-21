@@ -14,6 +14,9 @@ export default function SbarraDeleteAccount() {
         "Preferencias de usuario y configuraciones."
       ]}
       appPurpose="organizar tu rutina diaria"
+      privacyRoute="/sbarra/privacidad"
+      termsRoute="/sbarra/terminos"
+      deleteAccountRoute="/sbarra/delete-account"
     />
   );
 }

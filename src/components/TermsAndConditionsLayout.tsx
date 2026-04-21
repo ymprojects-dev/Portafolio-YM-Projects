@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import AppFooter from "./app/AppFooter";
+
 export interface TermsAndConditionsProps {
   appName: string;
   appType?: "aplicación" | "juego";
@@ -12,6 +14,11 @@ export interface TermsAndConditionsProps {
   iconPath: string;
   returnRoute: string;
   lastUpdated: string;
+  tagline?: string;
+  homeRoute?: string;
+  privacyRoute?: string;
+  termsRoute?: string;
+  deleteAccountRoute?: string;
 }
 
 export default function TermsAndConditionsLayout({
@@ -25,6 +32,11 @@ export default function TermsAndConditionsLayout({
   iconPath,
   returnRoute,
   lastUpdated,
+  tagline = "Términos y Condiciones",
+  homeRoute,
+  privacyRoute,
+  termsRoute,
+  deleteAccountRoute,
 }: TermsAndConditionsProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -122,6 +134,14 @@ export default function TermsAndConditionsLayout({
           <p className="text-sm font-medium text-slate-500">Última actualización: {lastUpdated}.</p>
         </div>
       </div>
+      <AppFooter
+        appName={appName}
+        tagline={tagline}
+        homeRoute={homeRoute || returnRoute}
+        privacyRoute={privacyRoute}
+        termsRoute={termsRoute}
+        deleteAccountRoute={deleteAccountRoute}
+      />
     </div>
   );
 }

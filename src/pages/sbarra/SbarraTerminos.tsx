@@ -13,6 +13,9 @@ export default function SbarraTerminos() {
       iconPath="/images/sbarra/foreground_sbarra.png"
       returnRoute="/sbarra"
       lastUpdated="11 de abril de 2026"
+      privacyRoute="/sbarra/privacidad"
+      termsRoute="/sbarra/terminos"
+      deleteAccountRoute="/sbarra/delete-account"
     />
   );
 }

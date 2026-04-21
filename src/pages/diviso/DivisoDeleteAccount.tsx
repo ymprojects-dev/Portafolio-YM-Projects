@@ -10,11 +10,13 @@ export default function DivisoDeleteAccount() {
       primaryHoverClass="hover:text-[#2A94D5]"
       dataTypesList={[
         "Información de la cuenta (nombre, correo electrónico, contraseña).",
-        "Historial de gastos, tickets y divisiones creados.",
-        "Preferencias de usuario y configuraciones.",
-        "Historial de transacciones y deudas liquidadas."
+        "Historial de gastos, grupos y participantes creados.",
+        "Preferencias de usuario y configuraciones."
       ]}
-      appPurpose="dividir tus gastos y cuentas"
+      appPurpose="simplificar tus juntadas"
+      privacyRoute="/diviso/privacidad"
+      termsRoute="/diviso/terminos"
+      deleteAccountRoute="/diviso/delete-account"
     />
   );
 }

@@ -9,6 +9,9 @@ export default function DivisoPrivacidad() {
       iconPath="/images/diviso/foregroud_diviso.png"
       returnRoute="/diviso"
       lastUpdated="11 de abril de 2026"
+      privacyRoute="/diviso/privacidad"
+      termsRoute="/diviso/terminos"
+      deleteAccountRoute="/diviso/delete-account"
     />
   );
 }
