@@ -131,8 +131,8 @@ export default function Home() {
           </div>
           <div className="hidden md:flex items-center gap-8">
             {[
-              { id: "about", label: "Sobre Mí" },
               { id: "apps", label: "Proyectos" },
+              { id: "about", label: "Sobre Mí" },
               { id: "skills", label: "Habilidades" },
               { id: "process", label: "Proceso" }
             ].map((item) => (
@@ -218,40 +218,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Section */}
-        <section id="about" className="bg-surface-container-low py-24 lg:py-32">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-col lg:flex-row gap-16 items-start">
-              <div className="lg:sticky lg:top-32 w-full lg:w-1/3">
-                <h2 className="text-3xl lg:text-4xl font-bold mb-6">Sobre YM Projects</h2>
-                <div className="w-12 h-1 bg-primary rounded-full"></div>
-              </div>
-              <div className="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
-                {[
-                  { title: "Diseño Limpio", desc: "Creo en el poder de la simplificación. Elimino el exceso visual para que la funcionalidad clave respire." },
-                  { title: "El Rendimiento Primero", desc: "Hago que usar la app se sienta increíble, enfocándome en interfaces ágiles y memoria ultra-eficiente." },
-                  { title: "UX Orientado al Usuario", desc: "Me enfoco en el 'Por qué'. Cada micro-interacción está planeada para hacer más fáciles las metas del usuario." },
-                  { title: "Software de Alta Calidad", desc: "Programado con lenguajes nativos de gran estabilidad y arquitecturas móviles modernas altamente escalables." }
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="bg-white p-10 rounded-3xl ambient-shadow"
-                  >
-                    <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-                    <p className="text-on-surface-variant leading-relaxed text-sm">{item.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Featured Work */}
-        <section id="apps" className="py-24 lg:py-32 px-6">
+        <section id="apps" className="bg-surface-container-low py-24 lg:py-32 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="mb-16">
               <h2 className="text-4xl lg:text-5xl font-extrabold mb-4">Proyectos Destacados</h2>
@@ -311,6 +279,38 @@ export default function Home() {
                   </div>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section id="about" className="py-24 lg:py-32">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col lg:flex-row gap-16 items-start">
+              <div className="lg:sticky lg:top-32 w-full lg:w-1/3">
+                <h2 className="text-3xl lg:text-4xl font-bold mb-6">Sobre YM Projects</h2>
+                <div className="w-12 h-1 bg-primary rounded-full"></div>
+              </div>
+              <div className="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
+                {[
+                  { title: "Diseño Limpio", desc: "Creo en el poder de la simplificación. Elimino el exceso visual para que la funcionalidad clave respire." },
+                  { title: "El Rendimiento Primero", desc: "Hago que usar la app se sienta increíble, enfocándome en interfaces ágiles y memoria ultra-eficiente." },
+                  { title: "UX Orientado al Usuario", desc: "Me enfoco en el 'Por qué'. Cada micro-interacción está planeada para hacer más fáciles las metas del usuario." },
+                  { title: "Software de Alta Calidad", desc: "Programado con lenguajes nativos de gran estabilidad y arquitecturas móviles modernas altamente escalables." }
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="bg-white p-10 rounded-3xl ambient-shadow"
+                  >
+                    <h3 className="text-xl font-bold mb-4">{item.title}</h3>
+                    <p className="text-on-surface-variant leading-relaxed text-sm">{item.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
